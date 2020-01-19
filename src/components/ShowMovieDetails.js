@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
+import movieActions from '../redux/actions/movie.actions';
 
 class showMovieDetails extends Component {
   constructor(props) {
@@ -12,18 +14,20 @@ class showMovieDetails extends Component {
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
-    axios
-      .get('http://localhost:8082/api/movies/'+this.props.match.params.id)
-      .then(res => {
-         console.log("Print-showMovieDetails-API-response: " + res.data);
-        this.setState({
-          movie: res.data
-        })
-      })
-      .catch(err => {
-        console.log("Error from ShowMovietails");
-      })
+    const { getMovie } = this.props;
+
+    getMovie(this.props.match.params.id);
+    // axios
+    //   .get('http://localhost:8082/api/movies/'+this.props.match.params.id)
+    //   .then(res => {
+    //      console.log("Print-showMovieDetails-API-response: " + res.data);
+    //     this.setState({
+    //       movie: res.data
+    //     })
+    //   })
+    //   .catch(err => {
+    //     console.log("Error from ShowMovietails");
+    //   })
   };
 
   onDeleteClick (id) {
@@ -40,7 +44,11 @@ class showMovieDetails extends Component {
 
   render() {
 
-    const movie = this.state.movie;
+    // const movie = this.state.movie;
+    const {movie} = this.props;
+
+    if (!movie) return null;
+
     let MovieItem = <div>
       <table className="table table-hover table-dark">
         {/* <thead>
@@ -127,4 +135,18 @@ class showMovieDetails extends Component {
   }
 }
 
-export default showMovieDetails;
+const mapStateToProps = ({movieReducer}) => {
+  console.log(movieReducer)
+  const { movie }= movieReducer;
+
+  return {
+    movie
+  }
+}
+
+const mapDispatchToProps = {
+  getMovie: movieActions.getMovie
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(showMovieDetails) ;
