@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
+//Favoritos - movie item
 const MovieCard = (props) => {
     const movie  = props.movie;
 

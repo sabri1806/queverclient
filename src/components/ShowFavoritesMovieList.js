@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
+//Favoritos - lista de peliculas 
 class ShowMovieList extends Component {
   constructor(props) {
     super(props);
