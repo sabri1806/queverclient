@@ -5,6 +5,7 @@ import '../App.css';
 import axios from 'axios';
 import movieActions from '../redux/actions/movie.actions';
 
+//Favoritos - detalle de la pelicula a editar o eliminar
 class showMovieDetails extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class showMovieDetails extends Component {
 
     getMovie(this.props.match.params.id);
     // axios
-    //   .get('http://localhost:8082/api/movies/'+this.props.match.params.id)
+    //   .get('http://localhost:8082/api/favorites-movies/'+this.props.match.params.id)
     //   .then(res => {
     //      console.log("Print-showMovieDetails-API-response: " + res.data);
     //     this.setState({
@@ -32,7 +33,7 @@ class showMovieDetails extends Component {
 
   onDeleteClick (id) {
     axios
-      .delete('http://localhost:8082/api/movies/'+id)
+      .delete('http://localhost:8082/api/favorites-movies/'+id)
       .then(res => {
         this.props.history.push("/");
       })

@@ -14,14 +14,14 @@ class ShowMovieList extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/movies')
+      .get('http://localhost:8082/api/favorites-movies')
       .then(res => {
         this.setState({
           movies: res.data
         })
       })
       .catch(err =>{
-        console.log('Error from ShowMovieList');
+        console.log('Error from ShowFavoritesMovieList');
       })
   };
 
@@ -40,20 +40,20 @@ class ShowMovieList extends Component {
     }
 
     return (
-      <div className="ShowMovieList">
+      <div className="ShowFavoritesMovieList">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <br />
-              <h2 className="display-4 text-center">Movies List</h2>
+              <h2 className="display-4 text-center">Favorites Movies List</h2>
             </div>
 
             <div className="col-md-11">
-              <Link to="/create-movie" className="btn btn-outline-warning float-right">
-                + Add New Movie
+              <Link to="/create-favorite-movie" className="btn btn-outline-warning float-right">
+                + Add New Favorite Movie
               </Link>
               <Link to="/share-movie" className="btn btn-outline-warning float-left">
-                + Share List of Movies
+                + Share List of Movies Favorites
               </Link>
               <br />
               <br />

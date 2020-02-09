@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
 
+//Favoritos - Edicion
 class UpdateMovieInfo extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class UpdateMovieInfo extends Component {
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
     axios
-      .get('http://localhost:8082/api/movies/'+this.props.match.params.id)
+      .get('http://localhost:8082/api/favorites-movies/'+this.props.match.params.id)
       .then(res => {
         // this.setState({...this.state, movie: res.data})
         this.setState({
@@ -51,7 +52,7 @@ class UpdateMovieInfo extends Component {
     };
 
     axios
-      .put('http://localhost:8082/api/movies/'+this.props.match.params.id, data)
+      .put('http://localhost:8082/api/favorites-movies/'+this.props.match.params.id, data)
       .then(res => {
         this.props.history.push('/show-movie/'+this.props.match.params.id);
       })
@@ -75,7 +76,7 @@ class UpdateMovieInfo extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Edit Movie</h1>
               <p className="lead text-center">
-                  Update Movie's Info
+                  Update Favorite Movie's Info
               </p>
             </div>
           </div>

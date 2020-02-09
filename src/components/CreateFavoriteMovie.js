@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-class CreateMovie extends Component {
+class CreateFavoriteMovie extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,7 +31,7 @@ class CreateMovie extends Component {
     };
 
     axios
-      .post('http://localhost:8082/api/movies', data)
+      .post('http://localhost:8082/api/favorites-movies', data)
       .then(res => {
         console.log(data + ">> esto viene en data");
         this.setState({
@@ -44,13 +44,13 @@ class CreateMovie extends Component {
         this.props.history.push('/');
       })
       .catch(err => {
-        console.log("Error in CreateMovie!");
+        console.log("Error in CreateFavoriteMovie!");
       })
   };
 
   render() {
     return (
-      <div className="CreateMovie">
+      <div className="CreateFavoriteMovie">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -62,7 +62,7 @@ class CreateMovie extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Add Movie</h1>
               <p className="lead text-center">
-                Create new movie
+                Create new favorite movie
               </p>
               
               <form noValidate onSubmit={this.onSubmit}>
@@ -134,4 +134,4 @@ class CreateMovie extends Component {
   }
 }
 
-export default CreateMovie;
+export default CreateFavoriteMovie;
