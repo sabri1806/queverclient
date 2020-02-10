@@ -9,6 +9,7 @@ import UpdateMovieInfo from './components/UpdateMovieInfo';
 import store from './redux/stores/app.store';
 import SearchMoviesPage from './pages/search-movies/SearchMoviesPage';
 import MovieDetail from './components/MovieDetail';
+import QueVerListPage from './pages/que-ver-list/QueVerListPage';
 
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path='/create-favorite-movie' component={CreateFavoriteMovie} />
           <Route path='/edit-movie/:id' component={UpdateMovieInfo} />
           <Route path='/show-movie/:id' component={ShowMovieDetails} />
+          <Route path='/quever-list' component={QueVerListPage}/>
         </div>
       </Router>
       </Provider>

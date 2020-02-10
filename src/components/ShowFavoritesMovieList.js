@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+//import { DropdownMenu} from 'react-bootstrap-dropdown-menu';
+import { Navbar, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
@@ -21,7 +23,7 @@ class ShowMovieList extends Component {
           movies: res.data
         })
       })
-      .catch(err =>{
+      .catch(err => {
         console.log('Error from ShowFavoritesMovieList');
       })
   };
@@ -32,19 +34,44 @@ class ShowMovieList extends Component {
     console.log("PrintMovie: " + movies);
     let movieList;
 
-    if(!movies) {
-        movieList = "there is no movie record!";
+    if (!movies) {
+      movieList = "there is no movie record!";
     } else {
-        movieList = movies.map((movie, k) =>
+      movieList = movies.map((movie, k) =>
         <MovieCard movie={movie} key={k} />
       );
     }
 
     return (
+
+
+
       <div className="ShowFavoritesMovieList">
+        <Navbar bg="light" variant="light">
+          <Navbar.Brand href="#home">Que ver App</Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            
+            
+            <NavDropdown title="Menu" id="collasible-nav-dropdown">
+            <Navbar.Text>
+              Signed in as: <a href="#login">Saa1806</a>
+            </Navbar.Text>
+              <NavDropdown.Item href="/">Favorites Movie</NavDropdown.Item>
+              <NavDropdown.Item href="/search-movie">Search Movie</NavDropdown.Item>
+              <NavDropdown.Item href="/quever-list">Que ver List</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            </NavDropdown>
+            
+          </Navbar.Collapse>
+        </Navbar>
         <div className="container">
+
           <div className="row">
+
             <div className="col-md-12">
+
               <br />
               <h2 className="display-4 text-center">Favorites Movies List</h2>
             </div>
@@ -56,6 +83,7 @@ class ShowMovieList extends Component {
               <Link to="/share-movie" className="btn btn-outline-warning float-left">
                 + Share List of Movies Favorites
               </Link>
+
               <br />
               <br />
               <hr />
@@ -63,7 +91,7 @@ class ShowMovieList extends Component {
           </div>
 
           <div className="list">
-                {movieList}
+            {movieList}
           </div>
         </div>
       </div>
