@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
+//import withFirebaseAuth from 'react-with-firebase-auth';
+//import * as firebase from 'firebase/app';
 //import { DropdownMenu} from 'react-bootstrap-dropdown-menu';
 import { Navbar, NavDropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+
+
 
 //Favoritos - lista de peliculas 
 class ShowMovieList extends Component {
@@ -28,10 +32,9 @@ class ShowMovieList extends Component {
       })
   };
 
-
   render() {
+
     const movies = this.state.movies;
-    console.log("PrintMovie: " + movies);
     let movieList;
 
     if (!movies) {
@@ -43,9 +46,6 @@ class ShowMovieList extends Component {
     }
 
     return (
-
-
-
       <div className="ShowFavoritesMovieList">
         <Navbar bg="light" variant="light">
           <Navbar.Brand href="#home">Que ver App</Navbar.Brand>
@@ -56,12 +56,14 @@ class ShowMovieList extends Component {
             <NavDropdown title="Menu" id="collasible-nav-dropdown">
             <Navbar.Text>
               Signed in as: <a href="#login">Saa1806</a>
+              
             </Navbar.Text>
               <NavDropdown.Item href="/">Favorites Movie</NavDropdown.Item>
               <NavDropdown.Item href="/search-movie">Search Movie</NavDropdown.Item>
               <NavDropdown.Item href="/quever-list">Que ver List</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => {this.props.signOut(); window.location = '/login';}}>Sign Out</NavDropdown.Item>
             </NavDropdown>
             
           </Navbar.Collapse>
@@ -98,5 +100,6 @@ class ShowMovieList extends Component {
     );
   }
 }
+
 
 export default ShowMovieList;
