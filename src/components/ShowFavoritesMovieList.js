@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import '../App.css';
 import axios from 'axios';
-//import withFirebaseAuth from 'react-with-firebase-auth';
-//import * as firebase from 'firebase/app';
-//import { DropdownMenu} from 'react-bootstrap-dropdown-menu';
-import { Navbar, NavDropdown} from 'react-bootstrap';
+import { Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import MainLayout from './MainLayout';
 
-
-
-//Favoritos - lista de peliculas 
+//Favoritos - lista de peliculas
 class ShowMovieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: []
+      movies: [],
     };
   }
 
@@ -24,82 +21,100 @@ class ShowMovieList extends Component {
       .get('http://localhost:8082/api/favorites-movies')
       .then(res => {
         this.setState({
-          movies: res.data
-        })
+          movies: res.data,
+        });
       })
       .catch(err => {
         console.log('Error from ShowFavoritesMovieList');
-      })
-  };
+      });
+  }
 
   render() {
-
+    //const { user } = this.props;
+    const user = JSON.parse(localStorage.getItem('user'));
     const movies = this.state.movies;
     let movieList;
+    console.log(user);
+    if (!user) {
+      return null;
+    }
 
     if (!movies) {
-      movieList = "there is no movie record!";
+      movieList = 'there is no movie record!';
     } else {
-      movieList = movies.map((movie, k) =>
-        <MovieCard movie={movie} key={k} />
-      );
+      movieList = movies.map((movie, k) => <MovieCard movie={movie} key={k} />);
     }
 
     return (
-      <div className="ShowFavoritesMovieList">
-        <Navbar bg="light" variant="light">
-          <Navbar.Brand href="#home">Que ver App</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            
-            
-            <NavDropdown title="Menu" id="collasible-nav-dropdown">
-            <Navbar.Text>
-              Signed in as: <a href="#login">Saa1806</a>
-              
-            </Navbar.Text>
-              <NavDropdown.Item href="/">Favorites Movie</NavDropdown.Item>
-              <NavDropdown.Item href="/search-movie">Search Movie</NavDropdown.Item>
-              <NavDropdown.Item href="/quever-list">Que ver List</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              <NavDropdown.Item onClick={() => {this.props.signOut(); window.location = '/login';}}>Sign Out</NavDropdown.Item>
-            </NavDropdown>
-            
-          </Navbar.Collapse>
-        </Navbar>
-        <div className="container">
+      <MainLayout>
+        <div className='ShowFavoritesMovieList'>
+          <Navbar bg='light' variant='light'>
+            <Navbar.Brand href='#home'>Que ver App</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className='justify-content-end'>
+              <NavDropdown title='Menu' id='collasible-nav-dropdown'>
+                <Navbar.Text>
+                  Signed in as: <a href='#login'>Mark Otto</a>
+                </Navbar.Text>
 
-          <div className="row">
+                <NavDropdown.Item href='/'>Favorites Movie</NavDropdown.Item>
+                <NavDropdown.Item href='/search-movie'>
+                  Search Movie
+                </NavDropdown.Item>
+                <NavDropdown.Item href='/quever-list'>
+                  Que ver List
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href='#action/3.4'>
+                  Separated link
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={this.signOut}>
+                  Sign Out
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Navbar.Collapse>
+          </Navbar>
 
-            <div className="col-md-12">
+          <div className='container'>
+            <div className='row'>
+              <div className='col-md-12'>
+                <br />
+                <h2 className='display-4 text-center'>Favorites Movies List</h2>
+              </div>
 
-              <br />
-              <h2 className="display-4 text-center">Favorites Movies List</h2>
+              <div className='col-md-11'>
+                <Link
+                  to='/create-favorite-movie'
+                  className='btn btn-outline-warning float-right'
+                >
+                  + Add New Favorite Movie
+                </Link>
+                <Link
+                  to='/share-movie'
+                  className='btn btn-outline-warning float-left'
+                >
+                  + Share List of Movies Favorites
+                </Link>
+
+                <br />
+                <br />
+                <hr />
+              </div>
             </div>
 
-            <div className="col-md-11">
-              <Link to="/create-favorite-movie" className="btn btn-outline-warning float-right">
-                + Add New Favorite Movie
-              </Link>
-              <Link to="/share-movie" className="btn btn-outline-warning float-left">
-                + Share List of Movies Favorites
-              </Link>
-
-              <br />
-              <br />
-              <hr />
-            </div>
-          </div>
-
-          <div className="list">
-            {movieList}
+            <div className='list'>{movieList}</div>
           </div>
         </div>
-      </div>
+      </MainLayout>
     );
   }
 }
 
+const mapStateToProps = ({ appReducer }) => {
+  return {
+    user: appReducer.user,
+    signOut: appReducer.signOut,
+  };
+};
 
-export default ShowMovieList;
+export default connect(mapStateToProps, null)(ShowMovieList);

@@ -51,6 +51,7 @@ const removeLastMovie = () => async dispatch => {
 }
 
 
+
 export default {
     getMovie,
     getMovieSuccess,

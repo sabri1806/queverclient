@@ -1,24 +1,43 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import 'firebase/auth';
+import * as firebase from 'firebase/app';
+import firebaseConfig from '../firebaseConfig';
+import withFirebaseAuth from 'react-with-firebase-auth';
 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-
-const Login = ({user, signInWithGoogle, history}) => {
-    user && console.log(user.email)
-    console.log(history);
-   // localStorage.setItem('movieUser',user.email);
-   if (user) {
-    window.location = '/';
-   }
-
-    return (
-       
-        <div style={{textAlign:'center', marginTop:'75px'}}>
-            <p>Please, Sign in</p>
-            <button onClick={signInWithGoogle}>
-                Sign in with Google
-                </button>
-        </div>
+const Login = ({ history, signInWithGoogle, signOut, user }) => {
+  if (user) {
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        displayName: user.displayName,
+        email: user.email,
+        photoUrl: '',
+      }),
     );
-}
+    signOut();
+    history.push('/show-favourite');
+  }
 
-export default Login;
+  return (
+    <div style={{ textAlign: 'center', marginTop: '75px' }}>
+      <p>Please, Sign in</p>
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
+    </div>
+  );
+};
+
+const firebaseAppAuth = firebaseApp.auth();
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
+
+//export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(
+  withFirebaseAuth({
+    providers,
+    firebaseAppAuth,
+  })(Login),
+);
