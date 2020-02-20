@@ -12,7 +12,7 @@ class CreateFavoriteMovie extends Component {
       description: '',
       genre: '',
       year: '',
-      cast: ''
+      cast: '',
     };
   }
 
@@ -34,38 +34,39 @@ class CreateFavoriteMovie extends Component {
     axios
       .post('http://localhost:8082/api/favorites-movies', data)
       .then(res => {
-        console.log(data + ">> esto viene en data");
+        console.log(data + '>> esto viene en data');
         this.setState({
           moviename: '',
           description: '',
           genre: '',
           year: '',
-          cast: ''
-        })
-        this.props.history.push('/');
+          cast: '',
+        });
+        this.props.history.push('/show-favourite');
       })
       .catch(err => {
-        console.log("Error in CreateFavoriteMovie!");
-      })
+        console.log('Error in CreateFavoriteMovie!');
+      });
   };
 
   render() {
     return (
-      <div className="CreateFavoriteMovie">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
+      <div className='CreateFavoriteMovie'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-8 m-auto'>
               <br />
-              <Link to="/" className="btn btn-outline-warning float-left">
+              <Link
+                to='/show-favourite'
+                className='btn btn-outline-warning float-left'
+              >
                 Show Movie List
               </Link>
             </div>
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Movie</h1>
-              <p className="lead text-center">
-                Create new favorite movie
-              </p>
-              
+            <div className='col-md-8 m-auto'>
+              <h1 className='display-4 text-center'>Add Movie</h1>
+              <p className='lead text-center'>Create new favorite movie</p>
+
               <form noValidate onSubmit={this.onSubmit}>
                 <div className='form-group'>
                   <input
@@ -123,8 +124,8 @@ class CreateFavoriteMovie extends Component {
                   />
                 </div>
                 <input
-                  type="submit"
-                  className="btn btn-outline-warning btn-block mt-4"
+                  type='submit'
+                  className='btn btn-outline-warning btn-block mt-4'
                 />
               </form>
             </div>

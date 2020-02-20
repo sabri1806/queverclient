@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App.css';
 import axios from 'axios';
-import { Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import MainLayout from './MainLayout';
@@ -18,6 +17,7 @@ class ShowMovieList extends Component {
 
   componentDidMount() {
     axios
+      //get all favorites-movie
       .get('http://localhost:8082/api/favorites-movies')
       .then(res => {
         this.setState({
@@ -48,40 +48,12 @@ class ShowMovieList extends Component {
     return (
       <MainLayout>
         <div className='ShowFavoritesMovieList'>
-          <Navbar bg='light' variant='light'>
-            <Navbar.Brand href='#home'>Que ver App</Navbar.Brand>
-            <Navbar.Toggle />
-            <Navbar.Collapse className='justify-content-end'>
-              <NavDropdown title='Menu' id='collasible-nav-dropdown'>
-                <Navbar.Text>
-                  Signed in as: <a href='#login'>Mark Otto</a>
-                </Navbar.Text>
-
-                <NavDropdown.Item href='/'>Favorites Movie</NavDropdown.Item>
-                <NavDropdown.Item href='/search-movie'>
-                  Search Movie
-                </NavDropdown.Item>
-                <NavDropdown.Item href='/quever-list'>
-                  Que ver List
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action/3.4'>
-                  Separated link
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={this.signOut}>
-                  Sign Out
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Navbar.Collapse>
-          </Navbar>
-
           <div className='container'>
             <div className='row'>
               <div className='col-md-12'>
                 <br />
                 <h2 className='display-4 text-center'>Favorites Movies List</h2>
               </div>
-
               <div className='col-md-11'>
                 <Link
                   to='/create-favorite-movie'

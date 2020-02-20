@@ -19,12 +19,15 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  linkMenu: {
+    textDecoration: 'none',
+  },
 }));
 
 const MenuAppBar = ({ userName, signOut }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  // const [anchorEl2, setAnchorEl2] = React.useState(null);
 
   const open = Boolean(anchorEl);
 
@@ -32,11 +35,11 @@ const MenuAppBar = ({ userName, signOut }) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuBurger = event => {
+  /* const handleMenuBurger = event => {
     console.log(event);
     setAnchorEl2(event.currentTarget);
   };
-
+ */
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -45,34 +48,9 @@ const MenuAppBar = ({ userName, signOut }) => {
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            onClick={handleMenuBurger}
-            aria-label='menu'
-          >
-            <MenuIcon />
-            <Menu
-              id='menu-appbar'
-              anchorEl={anchorEl2}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuItem>pEpito</MenuItem>
-            </Menu>
-          </IconButton>
+          <MenuIcon />
           <Typography variant='h6' className={classes.title}>
-            Que Ver App
+            <a href='/home'>Que Ver App</a>
           </Typography>
 
           {userName && (
@@ -101,8 +79,29 @@ const MenuAppBar = ({ userName, signOut }) => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem>pEpito</MenuItem>
-                <MenuItem>Que ver List</MenuItem>
+                <MenuItem>
+                  <a className={classes.linkMenu} href='/home'>
+                    Home
+                  </a>
+                </MenuItem>
+                <MenuItem>
+                  <a
+                    className={classes.linkMenu}
+                    href='/watch-later-movie-list'
+                  >
+                    Watch Later List
+                  </a>
+                </MenuItem>
+                <MenuItem>
+                  <a className={classes.linkMenu} href='/show-favourite'>
+                    Favorites Movies
+                  </a>
+                </MenuItem>
+                <MenuItem>
+                  <a className={classes.linkMenu} href='/search-movie'>
+                    Search Movie
+                  </a>
+                </MenuItem>
                 <MenuItem onClick={signOut}>Log out</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>

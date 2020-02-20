@@ -6,11 +6,12 @@ import Login from './components/Login';
 import CreateFavoriteMovie from './components/CreateFavoriteMovie';
 import ShowFavoritesMovieList from './components/ShowFavoritesMovieList';
 import ShowMovieDetails from './components/ShowMovieDetails';
-import UpdateMovieInfo from './components/UpdateMovieInfo';
+import UpdateFavoritesMovieInfo from './components/UpdateFavoritesMovieInfo';
 import store from './redux/stores/app.store';
 import SearchMoviesPage from './pages/search-movies/SearchMoviesPage';
 import MovieDetail from './components/MovieDetail';
-import QueVerListPage from './pages/que-ver-list/QueVerListPage';
+import Home from './components/Home';
+import ShowWatchLaterMovieList from './components/ShowWatchLaterMovieList';
 
 class App extends Component {
   render() {
@@ -18,10 +19,16 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
+            <Route exact path='/home' component={() => <Home />} />
             <Route
               exact
               path='/show-favourite'
               component={() => <ShowFavoritesMovieList />}
+            />
+            <Route
+              exact
+              path='/watch-later-movie-list'
+              component={() => <ShowWatchLaterMovieList />}
             />
             <Route
               path='/login'
@@ -34,52 +41,24 @@ class App extends Component {
             />
             <Route
               path='/search-movie'
-              component={() =>
-                this.props.user ? (
-                  <SearchMoviesPage signOut={this.props.signOut} />
-                ) : null
-              }
+              component={() => (
+                <SearchMoviesPage signOut={this.props.signOut} />
+              )}
             />
-            <Route
-              path='/movie-detail/:id'
-              component={() =>
-                this.props.user ? (
-                  <MovieDetail signOut={this.props.signOut} />
-                ) : null
-              }
-            />
+            <Route path='/movie-detail/:id' component={MovieDetail} />
             <Route
               path='/create-favorite-movie'
-              component={() =>
-                this.props.user ? (
-                  <CreateFavoriteMovie signOut={this.props.signOut} />
-                ) : null
-              }
+              component={() => (
+                <CreateFavoriteMovie signOut={this.props.signOut} />
+              )}
             />
             <Route
               path='/edit-movie/:id'
-              component={() =>
-                this.props.user ? (
-                  <UpdateMovieInfo signOut={this.props.signOut} />
-                ) : null
-              }
+              component={() => (
+                <UpdateFavoritesMovieInfo signOut={this.props.signOut} />
+              )}
             />
-            <Route
-              path='/show-movie/:id'
-              component={() =>
-                this.props.user ? (
-                  <ShowMovieDetails signOut={this.props.signOut} />
-                ) : null
-              }
-            />
-            <Route
-              path='/quever-list'
-              component={() =>
-                this.props.user ? (
-                  <QueVerListPage signOut={this.props.signOut} />
-                ) : null
-              }
-            />
+            <Route path='/show-movie/:id' component={ShowMovieDetails} />
           </div>
         </Router>
       </Provider>
