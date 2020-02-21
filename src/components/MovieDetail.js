@@ -26,13 +26,24 @@ const MovieDetail = ({
 
   if (!movie) return null;
 
-  const rateMovie = movie => {
-    console.log('llega');
-    MovieService.rateMovieQueVer(movie).then(data => {
-      console.log(data);
-    });
+  const handleRateMovie = (movie, rateValue) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    MovieService.rateMovieQueVer(
+      user.email,
+      movie.imdbID,
+      rateValue,
+    ).then(data => {}, handleCalculateRate(movie, rateValue));
+    //ejecucion del metodo que hace el promedio del rate, recibe como parametro el value,
+    //incrementar en 1 la cantidad de valoraciones y dividirlo a este por la cantidad de puntos (query al BE)
+    //que sume
+    //y ese dato pasarselo al componente RateMovie para que lo muestre
   };
 
+  const handleCalculateRate = (movie, rateValue) => {
+    MovieService.calculateRate(movie.imdbID, rateValue).then(data => {
+      console.log(data, 'ejecuto calculateRate');
+    });
+  };
   return (
     <Grid container style={{ textAlign: 'center' }}>
       <Grid item xs={8} sm={3}>
@@ -62,7 +73,7 @@ const MovieDetail = ({
           IMDB rating: {movie.imdbRating}
           <hr />
           <div style={{ paddingBottom: '10px' }}>Que Ver Rating: 8.9</div>
-          <RateMovie onChange={rateMovie} />
+          <RateMovie rateMovie={handleRateMovie} movie={movie} />
           <hr />
           <p>{movie.Plot}</p>
           <hr />
@@ -83,7 +94,7 @@ const MovieDetail = ({
   );
 };
 const mapStateToProps = ({ movieReducer }) => {
-  console.log(movieReducer, '-->lo que viene en reducer');
+  // console.log(movieReducer, '-->lo que viene en reducer');
   return { movie: movieReducer.movieDetail };
 };
 

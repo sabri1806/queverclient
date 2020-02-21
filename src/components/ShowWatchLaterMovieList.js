@@ -9,12 +9,11 @@ const ShowWatchLaterMovieList = () => {
 
   const deleteWatchLater = movie => {
     MovieService.deleteWatchLaterMovie(movie).then(data => {
-      console.log(data);
+      //console.log(data);
     });
   };
 
   const deleteAllWatchLater = movie => {
-    console.log('LLEGA');
     MovieService.deleteAllWatchLaterMovie(movies).then(data => {
       console.log(data);
     });

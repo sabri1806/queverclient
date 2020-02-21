@@ -78,11 +78,21 @@ const deleteAllWatchLaterMovie = () => {
     });
 };
 
-const rateMovieQueVer = () => {
+const rateMovieQueVer = (email, imdbID, rateValue) => {
+  const payload = {
+    email,
+    imdbID,
+    rateValue,
+  };
+  return axios.post(`http://localhost:8082/api/rate/save-rate-movie`, payload);
+};
+
+const calculateRate = (imdbID, rateValue) => {
   return new Promise((accept, reject) => {
     accept('todo ok');
   });
 };
+
 export default {
   getMovie,
   searchMovie,
@@ -92,4 +102,5 @@ export default {
   deleteWatchLaterMovie,
   deleteAllWatchLaterMovie,
   rateMovieQueVer,
+  calculateRate,
 };
