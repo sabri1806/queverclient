@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import movieActions from '../redux/actions/movie.actions';
@@ -13,9 +13,21 @@ const MovieDetail = ({
   history,
   removeLastMovie,
 }) => {
+  const [average, setAverage] = useState(null);
+  console.log(movie);
+  const handleCalculateRate = (movie, rateValue) => {
+    MovieService.calculateRate(movie.imdbID, rateValue).then(response => {
+      console.log(response.data);
+      setAverage(response.data.average);
+    });
+  };
+
   useEffect(() => {
     if (!movie) {
       getMovieDetail(match.params.id);
+    }
+    if (!average && movie) {
+      handleCalculateRate(movie);
     }
   });
 
@@ -26,24 +38,15 @@ const MovieDetail = ({
 
   if (!movie) return null;
 
-  const handleRateMovie = (movie, rateValue) => {
+  const handleRateMovie = rateValue => {
     const user = JSON.parse(localStorage.getItem('user'));
     MovieService.rateMovieQueVer(
       user.email,
       movie.imdbID,
       rateValue,
-    ).then(data => {}, handleCalculateRate(movie, rateValue));
-    //ejecucion del metodo que hace el promedio del rate, recibe como parametro el value,
-    //incrementar en 1 la cantidad de valoraciones y dividirlo a este por la cantidad de puntos (query al BE)
-    //que sume
-    //y ese dato pasarselo al componente RateMovie para que lo muestre
+    ).then(data => {}, handleCalculateRate(movie));
   };
 
-  const handleCalculateRate = (movie, rateValue) => {
-    MovieService.calculateRate(movie.imdbID, rateValue).then(data => {
-      console.log(data, 'ejecuto calculateRate');
-    });
-  };
   return (
     <Grid container style={{ textAlign: 'center' }}>
       <Grid item xs={8} sm={3}>
@@ -72,7 +75,7 @@ const MovieDetail = ({
           <hr />
           IMDB rating: {movie.imdbRating}
           <hr />
-          <div style={{ paddingBottom: '10px' }}>Que Ver Rating: 8.9</div>
+          <div style={{ paddingBottom: '10px' }}>Que Ver Rating: {average}</div>
           <RateMovie rateMovie={handleRateMovie} movie={movie} />
           <hr />
           <p>{movie.Plot}</p>

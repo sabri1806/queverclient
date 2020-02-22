@@ -84,13 +84,11 @@ const rateMovieQueVer = (email, imdbID, rateValue) => {
     imdbID,
     rateValue,
   };
-  return axios.post(`http://localhost:8082/api/rate/save-rate-movie`, payload);
+  return axios.post(`http://localhost:8082/api/rate/movies`, payload);
 };
 
 const calculateRate = (imdbID, rateValue) => {
-  return new Promise((accept, reject) => {
-    accept('todo ok');
-  });
+  return axios.get(`http://localhost:8082/api/rate/movies/${imdbID}`);
 };
 
 export default {

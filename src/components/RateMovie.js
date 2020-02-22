@@ -5,19 +5,20 @@ const RateMovie = ({ movie, rateMovie }) => {
   return (
     <div>
       <div style={{ padding: '5px' }}>
-        <button className='btn btn-primary' onClick={() => rateMovie(movie, 1)}>
+        <p>Rate It:</p>
+        <button className='btn btn-primary' onClick={() => rateMovie(1)}>
           1
         </button>
-        <button className='btn btn-primary' onClick={() => rateMovie(movie, 2)}>
+        <button className='btn btn-primary' onClick={() => rateMovie(2)}>
           2
         </button>
-        <button className='btn btn-primary' onClick={() => rateMovie(movie, 3)}>
+        <button className='btn btn-primary' onClick={() => rateMovie(3)}>
           3
         </button>
-        <button className='btn btn-primary' onClick={() => rateMovie(movie, 4)}>
+        <button className='btn btn-primary' onClick={() => rateMovie(4)}>
           4
         </button>
-        <button className='btn btn-primary' onClick={() => rateMovie(movie, 5)}>
+        <button className='btn btn-primary' onClick={() => rateMovie(5)}>
           5
         </button>
       </div>
