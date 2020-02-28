@@ -33,16 +33,9 @@ class ShowMovieList extends Component {
     //const { user } = this.props;
     const user = JSON.parse(localStorage.getItem('user'));
     const movies = this.state.movies;
-    let movieList;
-    console.log(user);
+
     if (!user) {
       return null;
-    }
-
-    if (!movies) {
-      movieList = 'there is no movie record!';
-    } else {
-      movieList = movies.map((movie, k) => <MovieCard movie={movie} key={k} />);
     }
 
     return (
@@ -74,7 +67,11 @@ class ShowMovieList extends Component {
               </div>
             </div>
 
-            <div className='list'>{movieList}</div>
+            <div className='list'>
+              {movies
+                ? movies.map((movie, k) => <MovieCard movie={movie} key={k} />)
+                : 'there is no movie record!'}
+            </div>
           </div>
         </div>
       </MainLayout>

@@ -20,11 +20,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path='/home' component={() => <Home />} />
-            <Route
-              exact
-              path='/show-favourite'
-              component={() => <ShowFavoritesMovieList />}
-            />
+            <Route path='/show-favourite' component={ShowFavoritesMovieList} />
             <Route
               exact
               path='/watch-later-movie-list'
@@ -54,9 +50,7 @@ class App extends Component {
             />
             <Route
               path='/edit-movie/:id'
-              component={() => (
-                <UpdateFavoritesMovieInfo signOut={this.props.signOut} />
-              )}
+              component={UpdateFavoritesMovieInfo}
             />
             <Route path='/show-movie/:id' component={ShowMovieDetails} />
           </div>

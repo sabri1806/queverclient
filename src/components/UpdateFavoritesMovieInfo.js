@@ -1,81 +1,71 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import '../App.css';
+import MovieService from '../services/MovieService';
 
 //Favoritos - Edicion
 class UpdateFavoritesMovieInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      moviename: '',
-      description: '',
-      genre: '',
-      year: '',
-      cast: '',
+      movie: {
+        moviename: '',
+        description: '',
+        genre: '',
+        year: '',
+        cast: '',
+      },
     };
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
-    axios
-      .get(
-        'http://localhost:8082/api/favorites-movies/' +
-          this.props.match.params.id,
-      )
-      .then(res => {
-        // this.setState({...this.state, movie: res.data})
-        this.setState({
-          moviename: res.data.moviename,
-          description: res.data.description,
-          genre: res.data.genre,
-          year: res.data.year,
-          cast: res.data.cast,
-        });
-      })
-      .catch(err => {
-        console.log('Error from UpdateFavoritesMovieInfo');
-      });
+    MovieService.getMovieForUpdate(this.props.match.params.id).then(
+      ({ data }) => {
+        this.setState({ movie: data });
+      },
+    );
   }
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const { movie } = this.state;
+    movie[e.target.name] = e.target.value;
+    this.setState({ movie });
   };
 
   onSubmit = e => {
     e.preventDefault();
-
+    const { movie } = this.state;
     const data = {
       //_id: this.props.match.params.id,
-      moviename: this.state.moviename,
-      description: this.state.description,
-      genre: this.state.genre,
-      year: this.state.year,
-      cast: this.state.cast,
+      moviename: movie.moviename,
+      description: movie.description,
+      genre: movie.genre,
+      year: movie.year,
+      cast: movie.cast,
     };
 
-    axios
-      .put(
-        'http://localhost:8082/api/favorites-movies/' +
-          this.props.match.params.id,
-        data,
-      )
+    MovieService.updateMovie(this.props.match.params.id, data)
       .then(res => {
         this.props.history.push('/show-movie/' + this.props.match.params.id);
       })
       .catch(err => {
-        console.log('Error in UpdateFavoritesMovieInfo!');
+        alert('Error in UpdateFavoritesMovieInfo!');
       });
   };
 
   render() {
+    const { movie } = this.state;
+
     return (
       <div className='UpdateFavoritesMovieInfo'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-8 m-auto'>
               <br />
-              <Link to='/' className='btn btn-outline-warning float-left'>
+              <Link
+                to={'/show-favourite'}
+                className='btn btn-outline-warning float-left'
+              >
                 Show Movie List
               </Link>
             </div>
@@ -94,7 +84,7 @@ class UpdateFavoritesMovieInfo extends Component {
                   placeholder='Name of the Movie'
                   name='moviename'
                   className='form-control'
-                  value={this.state.moviename}
+                  value={movie.moviename}
                   onChange={this.onChange}
                 />
               </div>
@@ -107,7 +97,7 @@ class UpdateFavoritesMovieInfo extends Component {
                   placeholder='Description'
                   name='description'
                   className='form-control'
-                  value={this.state.description}
+                  value={movie.description}
                   onChange={this.onChange}
                 />
               </div>
@@ -119,7 +109,7 @@ class UpdateFavoritesMovieInfo extends Component {
                   placeholder='Genre'
                   name='genre'
                   className='form-control'
-                  value={this.state.genre}
+                  value={movie.genre}
                   onChange={this.onChange}
                 />
               </div>
@@ -131,7 +121,7 @@ class UpdateFavoritesMovieInfo extends Component {
                   placeholder='Year of the movie'
                   name='year'
                   className='form-control'
-                  value={this.state.year}
+                  value={movie.year}
                   onChange={this.onChange}
                 />
               </div>
@@ -143,7 +133,7 @@ class UpdateFavoritesMovieInfo extends Component {
                   placeholder='Cast'
                   name='cast'
                   className='form-control'
-                  value={this.state.cast}
+                  value={movie.cast}
                   onChange={this.onChange}
                 />
               </div>

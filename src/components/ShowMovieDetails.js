@@ -16,19 +16,7 @@ class showMovieDetails extends Component {
 
   componentDidMount() {
     const { getMovie } = this.props;
-
     getMovie(this.props.match.params.id);
-    // axios
-    //   .get('http://localhost:8082/api/favorites-movies/'+this.props.match.params.id)
-    //   .then(res => {
-    //      console.log("Print-showMovieDetails-API-response: " + res.data);
-    //     this.setState({
-    //       movie: res.data
-    //     })
-    //   })
-    //   .catch(err => {
-    //     console.log("Error from ShowMovietails");
-    //   })
   }
 
   onDeleteClick(id) {
@@ -96,7 +84,10 @@ class showMovieDetails extends Component {
           <div className='row'>
             <div className='col-md-10 m-auto'>
               <br /> <br />
-              <Link to='/' className='btn btn-outline-warning float-left'>
+              <Link
+                to={'/show-favourite'}
+                className='btn btn-outline-warning float-left'
+              >
                 Show Movie List
               </Link>
             </div>
@@ -141,7 +132,6 @@ class showMovieDetails extends Component {
 }
 
 const mapStateToProps = ({ movieReducer }) => {
-  console.log(movieReducer);
   const { movie } = movieReducer;
 
   return {

@@ -3,7 +3,6 @@ import '../.env';
 
 const API_KEY = '9c38b7d';
 
-//get all favorite-movies
 const getMovie = id => {
   return axios.get('http://localhost:8082/api/favorites-movies/' + id);
 
@@ -18,6 +17,10 @@ const getMovie = id => {
   //   })
 };
 
+const getMovieForUpdate = id => {
+  return axios.get('http://localhost:8082/api/favorites-movies/' + id);
+};
+
 const searchMovie = textSearch => {
   return axios.get(
     `https://www.omdbapi.com/?apiKey=${API_KEY}&s=${textSearch}`,
@@ -27,6 +30,13 @@ const searchMovie = textSearch => {
 const getMovieDetail = movieId => {
   return axios.get(
     `https://www.omdbapi.com/?apiKey=${API_KEY}&i=${movieId}&plot=full&r=json`,
+  );
+};
+
+const updateMovie = (movieId, data) => {
+  return axios.put(
+    'http://localhost:8082/api/favorites-movies/' + movieId,
+    data,
   );
 };
 
@@ -93,6 +103,7 @@ const calculateRate = (imdbID, rateValue) => {
 
 export default {
   getMovie,
+  getMovieForUpdate,
   searchMovie,
   getMovieDetail,
   saveWatchLaterMovie,
@@ -101,4 +112,5 @@ export default {
   deleteAllWatchLaterMovie,
   rateMovieQueVer,
   calculateRate,
+  updateMovie,
 };
