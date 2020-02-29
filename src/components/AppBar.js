@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
 const MenuAppBar = ({ userName, signOut }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  // const [anchorEl2, setAnchorEl2] = React.useState(null);
 
   const open = Boolean(anchorEl);
 
@@ -35,11 +34,6 @@ const MenuAppBar = ({ userName, signOut }) => {
     setAnchorEl(event.currentTarget);
   };
 
-  /* const handleMenuBurger = event => {
-    console.log(event);
-    setAnchorEl2(event.currentTarget);
-  };
- */
   const handleClose = () => {
     setAnchorEl(null);
   };

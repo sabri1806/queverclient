@@ -4,21 +4,11 @@ import '../.env';
 const API_KEY = '9c38b7d';
 
 const getMovie = id => {
-  return axios.get('http://localhost:8082/api/favorites-movies/' + id);
-
-  //   .then(res => {
-  //      console.log("Print-showMovieDetails-API-response: " + res.data);
-  //     this.setState({
-  //       movie: res.data
-  //     })
-  //   })
-  //   .catch(err => {
-  //     console.log("Error from ShowMovietails");
-  //   })
+  return axios.get('https://quever-api.appspot.com/api/favorites-movies/' + id);
 };
 
 const getMovieForUpdate = id => {
-  return axios.get('http://localhost:8082/api/favorites-movies/' + id);
+  return axios.get('https://quever-api.appspot.com/api/favorites-movies/' + id);
 };
 
 const searchMovie = textSearch => {
@@ -35,7 +25,7 @@ const getMovieDetail = movieId => {
 
 const updateMovie = (movieId, data) => {
   return axios.put(
-    'http://localhost:8082/api/favorites-movies/' + movieId,
+    'https://quever-api.appspot.com/api/favorites-movies/' + movieId,
     data,
   );
 };
@@ -48,24 +38,29 @@ const saveWatchLaterMovie = (email, omDBId, poster) => {
   };
   console.log(payload);
   return axios.post(
-    `http://localhost:8082/api/watch-later/add-watch-later-movie`,
+    `https://quever-api.appspot.com/api/watch-later/add-watch-later-movie`,
     payload,
   );
 };
 
 const getWatchLaterMovies = () => {
-  //simulate a service
-  /* return new Promise((accept, reject) => {
-      accept('todo ok');
-    }); */
-  return axios.get('http://localhost:8082/api/watch-later/all-watch-later');
+  return axios.get(
+    'https://quever-api.appspot.com/api/watch-later/all-watch-later',
+  );
+};
+
+const getFavouritesMovies = () => {
+  return axios.get(
+    'https://quever-api.appspot.com/api/watch-later/all-watch-later',
+  );
 };
 
 const deleteWatchLaterMovie = id => {
   console.log(id, 'que trae esto');
   return axios
     .delete(
-      'http://localhost:8082/api/watch-later/delete-watch-later-movie/' + id,
+      'https://quever-api.appspot.com/api/watch-later/delete-watch-later-movie/' +
+        id,
     )
     .then(res => {
       window.location = '/watch-later-movie-list';
@@ -78,7 +73,7 @@ const deleteWatchLaterMovie = id => {
 const deleteAllWatchLaterMovie = () => {
   return axios
     .delete(
-      'http://localhost:8082/api/watch-later/delete-all-watch-later-movie',
+      'https://quever-api.appspot.com/api/watch-later/delete-all-watch-later-movie',
     )
     .then(res => {
       window.location = '/search-movie';
@@ -94,11 +89,11 @@ const rateMovieQueVer = (email, imdbID, rateValue) => {
     imdbID,
     rateValue,
   };
-  return axios.post(`http://localhost:8082/api/rate/movies`, payload);
+  return axios.post(`https://quever-api.appspot.com/api/rate/movies`, payload);
 };
 
 const calculateRate = (imdbID, rateValue) => {
-  return axios.get(`http://localhost:8082/api/rate/movies/${imdbID}`);
+  return axios.get(`https://quever-api.appspot.com/api/rate/movies/${imdbID}`);
 };
 
 export default {
@@ -107,6 +102,7 @@ export default {
   searchMovie,
   getMovieDetail,
   saveWatchLaterMovie,
+  getFavouritesMovies,
   getWatchLaterMovies,
   deleteWatchLaterMovie,
   deleteAllWatchLaterMovie,

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App.css';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import MainLayout from './MainLayout';
+import MovieService from '../services/MovieService';
 
 //Favoritos - lista de peliculas
 class ShowMovieList extends Component {
@@ -16,9 +16,7 @@ class ShowMovieList extends Component {
   }
 
   componentDidMount() {
-    axios
-      //get all favorites-movie
-      .get('http://localhost:8082/api/favorites-movies')
+    MovieService.getFavouritesMovies()
       .then(res => {
         this.setState({
           movies: res.data,

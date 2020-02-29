@@ -4,10 +4,8 @@ import AppBar from './AppBar';
 
 const MainLayout = ({ children, history }) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  //console.log(history);
 
   if (!user) {
-    //history.push('/login');
     window.location = '/login';
   }
 
