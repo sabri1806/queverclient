@@ -1,5 +1,4 @@
 import axios from 'axios';
-import '../.env';
 
 const API_KEY = '9c38b7d';
 
