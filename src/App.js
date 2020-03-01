@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Login from './components/Login';
+import Login from './pages/login/Login';
 // import Login from './components/Login';
-import CreateFavoriteMovie from './components/CreateFavoriteMovie';
-// import ShowMovieDetails from './components/ShowMovieDetails';
+import CreateFavoriteMovie from './pages/favourites/components/create-favourite-movie/CreateFavoriteMovie';
+import ShowMovieDetails from './components/movie-detail/ShowMovieDetails';
 // import UpdateFavoritesMovieInfo from './components/UpdateFavoritesMovieInfo';
 import store from './redux/stores/app.store';
-// import MovieDetail from './components/MovieDetail';
+import MovieDetail from './components/movie-detail/MovieDetail';
 // import Home from './components/Home';
-import ShowFavoritesMovieList from './components/ShowFavoritesMovieList';
-import ShowWatchLaterMovieList from './components/ShowWatchLaterMovieList';
+import ShowFavoritesMovieList from './pages/favourites/ShowFavoritesMovieList';
+import ShowWatchLaterMovieList from './pages/watch-later/ShowWatchLaterMovieList';
 import SearchMoviesPage from './pages/search-movies/SearchMoviesPage';
-import Home from './components/Home';
+import Home from './pages/home/Home';
 
 class App extends Component {
   render() {
@@ -33,6 +33,8 @@ class App extends Component {
             path='/create-favorite-movie'
             component={CreateFavoriteMovie}
           />
+          <Route path='/show-movie/:id' component={ShowMovieDetails} />
+          <Route path='/movie-detail/:id' component={MovieDetail} />
         </Router>
       </Provider>
       //   <Router>
@@ -47,10 +49,8 @@ class App extends Component {
       //         />
       //       )}
       //     />
-      //     <Route path='/movie-detail/:id' component={MovieDetail} />
 
       //     <Route path='/edit-movie/:id' component={UpdateFavoritesMovieInfo} />
-      //     <Route path='/show-movie/:id' component={ShowMovieDetails} />
       //   </Router>
     );
   }

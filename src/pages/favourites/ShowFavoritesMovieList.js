@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../App.css';
 import { Link } from 'react-router-dom';
-import MovieCard from './MovieCard';
-import MainLayout from './MainLayout';
-import MovieService from '../services/MovieService';
+import MovieCard from '../../components/movie-card/MovieCard';
+import MainLayout from '../../components/main-layout/MainLayout';
+import MovieService from '../../services/MovieService';
 
 //Favoritos - lista de peliculas
 class ShowMovieList extends Component {

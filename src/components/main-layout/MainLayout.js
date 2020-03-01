@@ -1,6 +1,6 @@
 import React from 'react';
 // import { withRouter } from 'react-router-dom';
-import AppBar from './AppBar';
+import AppBar from '../app-bar/AppBar';
 
 const MainLayout = ({ children }) => {
   // const user = JSON.parse(localStorage.getItem('user'));

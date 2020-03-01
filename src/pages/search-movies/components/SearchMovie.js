@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../App.css';
-import MovieActions from '../redux/actions/movie.actions';
+import MovieActions from '../../../redux/actions/movie.actions';
 
 //Consulta de peliculas - Búsqueda
 const SearchMovie = ({ searchMovies }) => {

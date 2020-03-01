@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
-import MovieService from '../services/MovieService';
+import MovieService from '../../../../services/MovieService';
 
 //Favoritos - Edicion
 class UpdateFavoritesMovieInfo extends Component {

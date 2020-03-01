@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import movieActions from '../redux/actions/movie.actions';
-import RateMovie from './RateMovie';
-import MovieService from '../services/MovieService';
+import movieActions from '../../redux/actions/movie.actions';
+import RateMovie from '../rate-movie/RateMovie';
+import MovieService from '../../services/MovieService';
 
 //consulta de peliculas - detalle
 const MovieDetail = ({

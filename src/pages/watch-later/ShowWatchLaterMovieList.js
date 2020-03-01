@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import MovieService from '../services/MovieService';
-import MainLayout from './MainLayout';
+import MovieService from '../../services/MovieService';
+import MainLayout from '../../components/main-layout/MainLayout';
 
 const ShowWatchLaterMovieList = () => {
   const [movies, setMovies] = useState([]);

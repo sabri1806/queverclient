@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../App.css';
 import axios from 'axios';
-import movieActions from '../redux/actions/movie.actions';
+import movieActions from '../../redux/actions/movie.actions';
 
 //Favoritos - detalle de la pelicula a editar o eliminar
 class showMovieDetails extends Component {
@@ -33,8 +32,6 @@ class showMovieDetails extends Component {
   render() {
     // const movie = this.state.movie;
     const { movie } = this.props;
-
-    if (!movie) return null;
 
     let MovieItem = (
       <div>
