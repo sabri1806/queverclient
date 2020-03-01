@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import MovieService from '../services/MovieService';
 
-//const DEFAULT_PLACEHOLDER_IMAGE =
-// "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
+// const DEFAULT_PLACEHOLDER_IMAGE =
+//   'https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg';
 
 //Consulta de Peliculas - lista
 const MovieList = ({ movies }) => {
@@ -13,6 +13,7 @@ const MovieList = ({ movies }) => {
   const watchLater = movie => {
     //console.log(movie);
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
     MovieService.saveWatchLaterMovie(
       user.email,
       movie.imdbID,

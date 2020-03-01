@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-//import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import MovieService from '../services/MovieService';
 import MainLayout from './MainLayout';
@@ -8,8 +7,9 @@ const ShowWatchLaterMovieList = () => {
   const [movies, setMovies] = useState([]);
 
   const deleteWatchLater = movie => {
+    console.log(setMovies);
     MovieService.deleteWatchLaterMovie(movie).then(data => {
-      //console.log(data);
+      console.log(data);
     });
   };
 
@@ -22,7 +22,7 @@ const ShowWatchLaterMovieList = () => {
   useEffect(() => {
     if (movies.length === 0) {
       MovieService.getWatchLaterMovies().then(response => {
-        //console.log(response.data);
+        console.log(response.data);
         setMovies(response.data);
       });
     }
@@ -67,15 +67,13 @@ const ShowWatchLaterMovieList = () => {
               </Grid>
             );
           })}
-        <div>
-          <button
-            type='button'
-            onClick={() => deleteAllWatchLater()}
-            className='btn btn-default btn-lg'
-          >
-            Delete all
-          </button>
-        </div>
+        <button
+          type='button'
+          onClick={() => deleteAllWatchLater()}
+          className='btn btn-default btn-lg'
+        >
+          Delete all
+        </button>
       </Grid>
     </MainLayout>
   );

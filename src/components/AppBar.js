@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -74,22 +75,18 @@ const MenuAppBar = ({ userName, signOut }) => {
                 onClose={handleClose}
               >
                 <MenuItem>
-                  <a className={classes.linkMenu} href='/home'>
+                  <a className={classes.linkMenu} href='/'>
                     Home
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    className={classes.linkMenu}
-                    href='/watch-later-movie-list'
-                  >
-                    Watch Later List
-                  </a>
+                  <Link to='/watch-later-movie-list'>Watch Later List</Link>
                 </MenuItem>
                 <MenuItem>
-                  <a className={classes.linkMenu} href='/show-favourite'>
+                  <Link to='/show-favourite'>Favorites Movies</Link>
+                  {/* <a className={classes.linkMenu} href='/show-favourite'>
                     Favorites Movies
-                  </a>
+                  </a> */}
                 </MenuItem>
                 <MenuItem>
                   <a className={classes.linkMenu} href='/search-movie'>

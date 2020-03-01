@@ -28,13 +28,12 @@ class ShowMovieList extends Component {
   }
 
   render() {
-    //const { user } = this.props;
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const user = JSON.parse(localStorage.getItem('user'));
     const movies = this.state.movies;
 
-    if (!user) {
-      return null;
-    }
+    // if (!user) {
+    //   return null;
+    // }
 
     return (
       <MainLayout>
