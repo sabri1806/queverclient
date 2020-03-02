@@ -1,12 +1,15 @@
 {
   "btnAction.cancel": "Cancel",
-  "btnAction.confirm": "Convirm",
+  "btnAction.confirm": "Confirm",
   "menu.home": "Home",
   "menu.search": "Search Movies",
   "menu.watchLater": "Watch Later",
   "menu.favourites": "Favourites",
+  "menu.logout": "Logout",
   "homePage.popular.title": "The most popular movies",
   "favouritesPage.dialog.tile": "Share favourites",
   "favouritesPage.dialog.shareWith": "Share to:",
-  "favouritesPage.snackbar.success": "Great, you already share your favourites!!"
+  "favouritesPage.snackbar.success": "Great, you already share your favourites!!",
+  "logoutDialog.title": "Logout",
+  "logoutDialog.message": "Are you sure you want to close session?"
 }

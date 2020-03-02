@@ -5,20 +5,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import useStyles from './MainLayout.styles';
 import SideMenu from '../side-menu/SideMenu';
 import { AppBar, Hidden, Toolbar, IconButton } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 
 const MainLayout = ({ actionBtn, children, history, title, subtitle }) => {
   const [open, setOpen] = useState(false);
   const classes = useStyles();
-  // const user = JSON.parse(localStorage.getItem('user'));
-  console.log('history', history);
-  // if (!user) {
-  //   window.location = '/login';
-  // }
-
-  // const signOut = () => {
-  //   localStorage.removeItem('user');
-  //   window.location = '/login';
-  // };
 
   const openSideMenu = () => {
     setOpen(true);
@@ -27,6 +18,12 @@ const MainLayout = ({ actionBtn, children, history, title, subtitle }) => {
   const closeSideMenu = () => {
     setOpen(false);
   };
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user);
+  if (!user) {
+    return <Redirect to={'/login'} />;
+  }
 
   return (
     <div className={classes.root}>
@@ -38,7 +35,7 @@ const MainLayout = ({ actionBtn, children, history, title, subtitle }) => {
       ></AppBar>
       <SideMenu
         open={open}
-        user={{}}
+        user={user}
         history={history}
         onClose={closeSideMenu}
       />

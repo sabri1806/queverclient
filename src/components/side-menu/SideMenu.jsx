@@ -15,10 +15,13 @@ import classNames from 'classnames';
 import MenuItems from './SideMenuItems';
 import SpainFlag from '../../assets/images/flags/es.svg';
 import BrazilFlag from '../../assets/images/flags/en.svg';
+import { useState } from 'react';
+import CustomDialog from '../custom-dialog/CustomDialog';
 
-const SideMenu = ({ history, open, onClose }) => {
+const SideMenu = ({ history, open, onClose, user }) => {
   const classes = useStyles();
   const { formatMessage } = useIntl();
+  const [logoutConfirmationOpen, setLogoutConfirmationOpen] = useState(false);
 
   const drawerProps =
     window.innerWidth >= 600
@@ -47,11 +50,19 @@ const SideMenu = ({ history, open, onClose }) => {
     history.push(path);
   };
 
+  // eslint-disable-next-line
+  const openLogoutConfirmation = () => {
+    setLogoutConfirmationOpen(true);
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    history.push('/login');
+  };
+
   const currentRoute = history ? history.location.pathname : '/';
 
   const getComponent = () => {
-    const user = { nickname: 'Sabrina Lucero' };
-
     const getMenuItem = (item, isSubmenu = false) => {
       let onClick = null;
       let itemClasses = [classes.menuItem];
@@ -72,7 +83,7 @@ const SideMenu = ({ history, open, onClose }) => {
           iconSelected = true;
         }
       } else if (item.action) {
-        onClick = this[item.action];
+        onClick = openLogoutConfirmation;
       } else {
         onClick = () => navigateTo(item.path);
 
@@ -120,7 +131,7 @@ const SideMenu = ({ history, open, onClose }) => {
             src={user && user.picture}
             className={classes.avatar}
           />
-          <span className={classes.userName}>{user && user['nickname']}</span>
+          <span className={classes.userName}>{user && user.displayName}</span>
         </div>
         {MenuItems.items.map((item, index) => {
           return (
@@ -182,6 +193,22 @@ const SideMenu = ({ history, open, onClose }) => {
       />
       {getComponent()}
       {/* {dialog} */}
+      <CustomDialog
+        open={logoutConfirmationOpen}
+        onClose={() => setLogoutConfirmationOpen(false)}
+        title={formatMessage({ id: 'logoutDialog.title' })}
+        message={formatMessage({ id: 'logoutDialog.message' })}
+        actions={[
+          {
+            onClick: () => setLogoutConfirmationOpen(false),
+            label: formatMessage({ id: 'btnAction.cancel' }),
+          },
+          {
+            onClick: logout,
+            label: formatMessage({ id: 'btnAction.confirm' }),
+          },
+        ]}
+      />
     </Drawer>
   );
 };

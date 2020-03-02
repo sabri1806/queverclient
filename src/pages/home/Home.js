@@ -15,7 +15,7 @@ const Home = ({ history }) => {
     MovieService.getPopularMovies().then(response => {
       setMovies(response.data.results);
     });
-  });
+  }, []);
 
   return (
     <MainLayout history={history} title={formatMessage({ id: 'menu.home' })}>
@@ -27,7 +27,7 @@ const Home = ({ history }) => {
           <Grid container spacing={8}>
             {movies.map(movie => {
               return (
-                <Grid item xs={3}>
+                <Grid key={movie.id} item xs={3}>
                   <Card>
                     <img
                       src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}

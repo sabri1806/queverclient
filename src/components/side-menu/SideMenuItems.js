@@ -3,6 +3,7 @@ import HomeIcon from '../icons/menu/HomeIcon';
 import SearchIcon from '../icons/menu/SearchIcon';
 import WatchLaterIcon from '../icons/menu/WatchLaterIcon';
 import ReviewsIcons from '../icons/menu/Favourites';
+import LogoutIcon from '../icons/menu/LogoutIcon';
 
 export default {
   items: [
@@ -29,6 +30,12 @@ export default {
       label: 'menu.favourites',
       path: '/favourite-movies',
       icon: <ReviewsIcons />,
+    },
+    {
+      id: 'close',
+      label: 'menu.logout',
+      action: 'openLogoutConfirmation',
+      icon: <LogoutIcon />,
     },
   ],
 };
