@@ -27,7 +27,7 @@ const Home = ({ history }) => {
           <Grid container spacing={8}>
             {movies.map(movie => {
               return (
-                <Grid key={movie.id} item xs={3}>
+                <Grid key={movie.id} item xs={6} md={3}>
                   <Card>
                     <img
                       src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
