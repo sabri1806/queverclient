@@ -55,6 +55,7 @@ export default makeStyles(theme => ({
   userInfo: {
     backgroundColor: '#ffffff',
     padding: '24px 24px 14px 24px',
+    borderBottom: '1px solid #e6ebf1',
   },
   countrySelector: {
     borderBottom: '1px solid #e6ebf1',
@@ -84,7 +85,7 @@ export default makeStyles(theme => ({
   },
   menuItemText: {
     fontFamily: 'inherit',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: 'normal',
   },
   menuItemTextRoot: {},

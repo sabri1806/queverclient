@@ -8,15 +8,13 @@ import Login from './pages/login/Login';
 import { IntlProvider } from 'react-intl';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Login from './components/Login';
 import CreateFavoriteMovie from './pages/favourites/components/create-favourite-movie/CreateFavoriteMovie';
 import ShowMovieDetails from './components/movie-detail/ShowMovieDetails';
 // import UpdateFavoritesMovieInfo from './components/UpdateFavoritesMovieInfo';
 import store from './redux/stores/app.store';
 import MovieDetail from './components/movie-detail/MovieDetail';
-// import Home from './components/Home';
-import ShowFavoritesMovieList from './pages/favourites/ShowFavoritesMovieList';
-import ShowWatchLaterMovieList from './pages/watch-later/ShowWatchLaterMovieList';
+import ShowFavoritesMovieList from './pages/favourites/FavouritesMovieList';
+import WatchLaterMovieList from './pages/watch-later/WatchLaterMovieList';
 import SearchMoviesPage from './pages/search-movies/SearchMoviesPage';
 import messages_es from './translations/es.json';
 import messages_en from './translations/en.json';
@@ -48,11 +46,11 @@ const App = () => {
               <Route path='/login' exact component={Login} />
               <Route
                 exact
-                path='/watch-later-movie-list'
-                component={ShowWatchLaterMovieList}
+                path='/watch-later'
+                component={WatchLaterMovieList}
               />
               <Route
-                path='/show-favourite'
+                path='/favourite-movies'
                 component={ShowFavoritesMovieList}
               />
               <Route path='/search-movie' component={SearchMoviesPage} />

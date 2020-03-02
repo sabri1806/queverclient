@@ -1,42 +1,36 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MovieCard from '../../components/movie-card/MovieCard';
 import MainLayout from '../../components/main-layout/MainLayout';
 import MovieService from '../../services/MovieService';
+import useStyles from './FavouritesMovieList.styles';
+import Box from '../../components/box/Box';
 
 //Favoritos - lista de peliculas
-class ShowMovieList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: [],
-    };
-  }
+const ShowMovieList = ({ history }) => {
+  const { formatMessage } = useIntl();
+  const classes = useStyles();
+  const [movies, setMovies] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     MovieService.getFavouritesMovies()
       .then(res => {
-        this.setState({
-          movies: res.data,
-        });
+        setMovies(res.data);
       })
       .catch(err => {
         console.log('Error from ShowFavoritesMovieList');
       });
-  }
+  });
 
-  render() {
-    // const user = JSON.parse(localStorage.getItem('user'));
-    const movies = this.state.movies;
-
-    // if (!user) {
-    //   return null;
-    // }
-
-    return (
-      <MainLayout>
-        <div className='ShowFavoritesMovieList'>
+  return (
+    <MainLayout
+      history={history}
+      title={formatMessage({ id: 'menu.favourites' })}
+    >
+      <Box>
+        <div className={classes.showFavoritesMovieList}>
           <div className='container'>
             <div className='row'>
               <div className='col-md-12'>
@@ -70,10 +64,10 @@ class ShowMovieList extends Component {
             </div>
           </div>
         </div>
-      </MainLayout>
-    );
-  }
-}
+      </Box>
+    </MainLayout>
+  );
+};
 
 const mapStateToProps = ({ appReducer }) => {
   return {

@@ -1,4 +1,6 @@
 {
   "menu.home": "Principal",
-  "menu.search": "Buscar Peliculas"
+  "menu.search": "Buscar Peliculas",
+  "menu.watchLater": "Ver Luego",
+  "menu.favourites": "Favoritos"
 }

@@ -50,15 +50,6 @@
   color: white;
 }
 
-.ShowFavoritesMovieList {
-  background-color: #4c4b49;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-  min-width: 100px;
-  color: white;
-}
-
 /* MovieList Styles */
 .list {
   display: grid;
