@@ -11,13 +11,12 @@ import MovieService from '../../services/MovieService';
 const MovieList = ({ movies }) => {
   //WatchLaterMovie - add movie
   const watchLater = movie => {
-    //console.log(movie);
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
     MovieService.saveWatchLaterMovie(
       user.email,
       movie.imdbID,
       movie.Poster,
+      movie.Title,
     ).then(data => {});
   };
 

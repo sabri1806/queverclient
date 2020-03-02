@@ -25,7 +25,7 @@ const ShowWatchLaterMovieList = ({ history }) => {
   useEffect(() => {
     if (movies.length === 0) {
       MovieService.getWatchLaterMovies().then(response => {
-        console.log(response.data);
+        console.log(response.data, 'getAll');
         setMovies(response.data);
       });
     }
@@ -57,7 +57,7 @@ const ShowWatchLaterMovieList = ({ history }) => {
                       padding: '10px ',
                     }}
                   >
-                    {movie.Title}
+                    <div>{movie.title}</div>
                     <div>
                       <img src={movie.poster} alt='' width='200'></img>
                     </div>

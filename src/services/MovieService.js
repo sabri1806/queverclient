@@ -50,11 +50,12 @@ const updateMovie = (movieId, data) => {
   );
 };
 
-const saveWatchLaterMovie = (email, omDBId, poster) => {
+const saveWatchLaterMovie = (email, omDBId, poster, title) => {
   const payload = {
     email,
     omDBId,
     poster,
+    title,
   };
   return axios.post(
     `https://quever-api.appspot.com/api/watch-later/add-watch-later-movie`,
@@ -75,7 +76,6 @@ const getFavouritesMovies = () => {
 };
 
 const deleteWatchLaterMovie = id => {
-  console.log(id, 'que trae esto');
   return axios
     .delete(
       'https://quever-api.appspot.com/api/watch-later/delete-watch-later-movie/' +

@@ -75,13 +75,6 @@ const ShowMovieList = ({ history }) => {
                 <Button onClick={() => setOpen(true)}>
                   + Share List of Movies Favorites
                 </Button>
-                {/* <Link
-                  to='/share-movie'
-                  className='btn btn-outline-warning float-left'
-                >
-                  + Share List of Movies Favorites
-                </Link> */}
-
                 <br />
                 <br />
                 <hr />
