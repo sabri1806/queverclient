@@ -128,7 +128,7 @@ const SideMenu = ({ history, open, onClose, user }) => {
         <div className={classes.userInfo}>
           <Avatar
             color={'#ff7075'}
-            src={user && user.picture}
+            src={user && user.photoUrl}
             className={classes.avatar}
           />
           <span className={classes.userName}>{user && user.displayName}</span>

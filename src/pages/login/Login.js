@@ -8,13 +8,14 @@ import withFirebaseAuth from 'react-with-firebase-auth';
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const Login = ({ history, signInWithGoogle, signOut, user }) => {
+  console.log(user); // eslint-disable-line
   if (user) {
     localStorage.setItem(
       'user',
       JSON.stringify({
         displayName: user.displayName,
         email: user.email,
-        photoUrl: '',
+        photoUrl: user.photoURL,
       }),
     );
     signOut();

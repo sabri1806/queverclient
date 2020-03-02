@@ -18,7 +18,7 @@ const ShowMovieList = ({ history }) => {
   const classes = useStyles();
   const [movies, setMovies] = useState([]);
   const [open, setOpen] = useState(false);
-  const [emailTo, setEmailTo] = useState(null);
+  const [emailTo, setEmailTo] = useState(' ');
   const [snackBarOpen, setSnackBarOpen] = useState(false);
 
   useEffect(() => {
@@ -37,14 +37,14 @@ const ShowMovieList = ({ history }) => {
   };
 
   const confirm = () => {
-    //TODO: update con usuario real logueado
+    const user = JSON.parse(localStorage.getItem('user'));
     const data = {
-      firstName: 'gennaro',
-      lastName: 'toranzo',
-      email: 'sabrinita185@gmail.com',
+      firstName: user.displayName.split(' ')[0],
+      lastName: user.displayName.split(' ')[1],
+      email: user.email,
       emailTo: emailTo,
     };
-    //TODO: agregar snackbar
+
     MovieService.shareFavourites(data).then(() => {
       setOpen(false);
       setSnackBarOpen(true);
