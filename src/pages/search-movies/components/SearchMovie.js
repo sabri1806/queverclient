@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useIntl } from 'react-intl';
+import useStyles from './SearchMovie.styles';
 import MovieActions from '../../../redux/actions/movie.actions';
+import Box from '../../../components/box/Box';
+import { FormControl, InputLabel, Input, Button } from '@material-ui/core';
 
 //Consulta de peliculas - Búsqueda
 const SearchMovie = ({ searchMovies }) => {
+  const { formatMessage } = useIntl();
+  const classes = useStyles();
   const [searchText, setSearchText] = useState('');
 
   const search = () => {
@@ -16,20 +21,37 @@ const SearchMovie = ({ searchMovies }) => {
   };
 
   return (
-    <div className='col-md-12' style={{ textAlign: 'center' }}>
-      <Link to='/search-movie'>
-        <h2 className='page-title'>Search Movie</h2>
-      </Link>
-      <input
-        type='text'
-        value={searchText}
-        onChange={updateSearchText}
-        placeholder='Enter a Movie name...'
-      />
-      <button className='btn btn-primary btn-lg' type='submit' onClick={search}>
-        Search
-      </button>
-    </div>
+    <Box
+      title={formatMessage({ id: 'searchPage.title' })}
+      classes={{
+        boxContent: classes.root,
+      }}
+    >
+      <FormControl className={classes.formControl}>
+        <InputLabel htmlFor='email'>
+          {formatMessage({ id: 'searchPage.text.placeholder' })}
+        </InputLabel>
+        <Input
+          id='email'
+          value={searchText}
+          onChange={updateSearchText}
+          classes={{
+            root: classes.textFieldRoot,
+          }}
+        />
+      </FormControl>
+      <Button
+        variant='contained'
+        color='primary'
+        classes={{
+          root: classes.searchBtnRoot,
+        }}
+        disabled={searchText.trim().length === 0}
+        onClick={search}
+      >
+        {formatMessage({ id: 'btnAction.search' })}
+      </Button>
+    </Box>
   );
 };
 

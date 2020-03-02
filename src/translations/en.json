@@ -1,6 +1,7 @@
 {
   "btnAction.cancel": "Cancel",
   "btnAction.confirm": "Confirm",
+  "btnAction.search": "Search",
   "menu.home": "Home",
   "menu.search": "Search Movies",
   "menu.watchLater": "Watch Later",
@@ -11,5 +12,7 @@
   "favouritesPage.dialog.shareWith": "Share to:",
   "favouritesPage.snackbar.success": "Great, you already share your favourites!!",
   "logoutDialog.title": "Logout",
-  "logoutDialog.message": "Are you sure you want to close session?"
+  "logoutDialog.message": "Are you sure you want to close session?",
+  "searchPage.title": "Movie Search",
+  "searchPage.text.placeholder": "Movie name"
 }
