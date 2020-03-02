@@ -1,7 +1,12 @@
 {
+  "btnAction.cancel": "Cancelar",
+  "btnAction.confirm": "Confirmar",
   "menu.home": "Principal",
   "menu.search": "Buscar Peliculas",
   "menu.watchLater": "Ver Luego",
   "menu.favourites": "Favoritos",
-  "homePage.popular.title": "Las peliculas mas populares"
+  "homePage.popular.title": "Las peliculas mas populares",
+  "favouritesPage.dialog.tile": "Compartir favoritos",
+  "favouritesPage.dialog.shareWith": "Comparitr a:",
+  "favouritesPage.snackbar.success": "Excelente ya compartiste tus favoritos!!"
 }

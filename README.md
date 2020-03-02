@@ -36,6 +36,7 @@ Add additional notes about how to deploy this on a live system
 
 ```
 gcloud config configurations list
+gcloud config configurations activate {name}
 gcloud config configurations delete {name}
 gcloud init
 gcloud app versions list

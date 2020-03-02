@@ -11,9 +11,9 @@ const ShowWatchLaterMovieList = ({ history }) => {
 
   const deleteWatchLater = movie => {
     console.log(setMovies);
-    MovieService.deleteWatchLaterMovie(movie).then(data => {
-      console.log(data);
-    });
+    // MovieService.deleteWatchLaterMovie(movie).then(data => {
+    //   console.log(data);
+    // });
   };
 
   const deleteAllWatchLater = movie => {

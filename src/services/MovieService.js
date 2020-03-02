@@ -23,6 +23,20 @@ const getPopularMovies = () => {
   );
 };
 
+const shareFavourites = ({ firstName, lastName, email, emailTo }) => {
+  const payload = {
+    firstName,
+    lastName,
+    email,
+    email_to: emailTo,
+  };
+
+  return axios.post(
+    `https://quever-api.appspot.com/api/favorites-movies/share-favourites`,
+    payload,
+  );
+};
+
 const getMovieDetail = movieId => {
   return axios.get(
     `https://www.omdbapi.com/?apiKey=${API_KEY}&i=${movieId}&plot=full&r=json`,
@@ -114,5 +128,6 @@ export default {
   deleteAllWatchLaterMovie,
   rateMovieQueVer,
   calculateRate,
+  shareFavourites,
   updateMovie,
 };
