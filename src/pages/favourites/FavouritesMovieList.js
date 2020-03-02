@@ -48,6 +48,7 @@ const ShowMovieList = ({ history }) => {
     MovieService.shareFavourites(data).then(() => {
       setOpen(false);
       setSnackBarOpen(true);
+      setEmailTo(null);
     });
   };
 
