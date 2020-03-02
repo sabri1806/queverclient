@@ -1,10 +1,13 @@
 import React from 'react';
 // import { withRouter } from 'react-router-dom';
-import AppBar from '../app-bar/AppBar';
+import useStyles from './MainLayout.styles';
+import SideMenu from '../side-menu/SideMenu';
+import { AppBar } from '@material-ui/core';
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, history }) => {
+  const classes = useStyles();
   // const user = JSON.parse(localStorage.getItem('user'));
-  console.log('main layout');
+  console.log('history', history);
   // if (!user) {
   //   window.location = '/login';
   // }
@@ -15,9 +18,22 @@ const MainLayout = ({ children }) => {
   // };
 
   return (
-    <div>
-      <AppBar userName={'user.displayName'} signOut={() => {}} />
-      {children}
+    <div className={classes.root}>
+      <AppBar
+        position='absolute'
+        classes={{
+          root: classes.appBarRoot,
+        }}
+      >
+        puto
+      </AppBar>
+      <SideMenu
+        open={true}
+        user={{}}
+        history={history}
+        // onClose={this.closeSideMenu}
+      />
+      <main className={classes.content}>{children}</main>
     </div>
   );
 };

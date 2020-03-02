@@ -3,9 +3,9 @@ import MainLayout from '../../components/main-layout/MainLayout';
 import SearchMovie from './components/SearchMovie';
 import MovieList from '../../components/movie-list/MovieList';
 
-const SearchMoviesPage = props => {
+const SearchMoviesPage = ({ history }) => {
   return (
-    <MainLayout>
+    <MainLayout history={history}>
       <div>
         search movie
         <SearchMovie />

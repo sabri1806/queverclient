@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Login from './pages/login/Login';
+import { IntlProvider } from 'react-intl';
 // import Login from './components/Login';
 import CreateFavoriteMovie from './pages/favourites/components/create-favourite-movie/CreateFavoriteMovie';
 import ShowMovieDetails from './components/movie-detail/ShowMovieDetails';
@@ -13,12 +14,22 @@ import MovieDetail from './components/movie-detail/MovieDetail';
 import ShowFavoritesMovieList from './pages/favourites/ShowFavoritesMovieList';
 import ShowWatchLaterMovieList from './pages/watch-later/ShowWatchLaterMovieList';
 import SearchMoviesPage from './pages/search-movies/SearchMoviesPage';
+import messages_es from './translations/es.json';
+import messages_en from './translations/en.json';
 import Home from './pages/home/Home';
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
+const App = () => {
+  const messages = {
+    es: messages_es,
+    en: messages_en,
+  };
+
+  const language =
+    localStorage.getItem('language') || navigator.language.substring(0, 2);
+
+  return (
+    <Provider store={store}>
+      <IntlProvider locale={language} messages={messages[language]}>
         <Router>
           <Route path='/' exact component={Home} />
           <Route path='/login' exact component={Login} />
@@ -36,24 +47,24 @@ class App extends Component {
           <Route path='/show-movie/:id' component={ShowMovieDetails} />
           <Route path='/movie-detail/:id' component={MovieDetail} />
         </Router>
-      </Provider>
-      //   <Router>
-      //     <Route path={process.env.PUBLIC_URL} components={Login}></Route>
-      //     <Route exact path='/home' component={() => <Home />} />
-      //     <Route
-      //       path='/login'
-      //       component={() => (
-      //         <Login
-      //           signInWithGoogle={this.props.signInWithGoogle}
-      //           user={this.props.user}
-      //         />
-      //       )}
-      //     />
+      </IntlProvider>
+    </Provider>
+    //   <Router>
+    //     <Route path={process.env.PUBLIC_URL} components={Login}></Route>
+    //     <Route exact path='/home' component={() => <Home />} />
+    //     <Route
+    //       path='/login'
+    //       component={() => (
+    //         <Login
+    //           signInWithGoogle={this.props.signInWithGoogle}
+    //           user={this.props.user}
+    //         />
+    //       )}
+    //     />
 
-      //     <Route path='/edit-movie/:id' component={UpdateFavoritesMovieInfo} />
-      //   </Router>
-    );
-  }
-}
+    //     <Route path='/edit-movie/:id' component={UpdateFavoritesMovieInfo} />
+    //   </Router>
+  );
+};
 
 export default App;
