@@ -2,5 +2,6 @@
   "menu.home": "Home",
   "menu.search": "Search Movies",
   "menu.watchLater": "Watch Later",
-  "menu.favourites": "Favourites"
+  "menu.favourites": "Favourites",
+  "homePage.popular.title": "The most popular movies"
 }

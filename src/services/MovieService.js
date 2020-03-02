@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = '9c38b7d';
+const THE_MOVIE_DB_API_KEY = '2b5628de9b99a860ded3569d24480f1d';
 
 const getMovie = id => {
   return axios.get('https://quever-api.appspot.com/api/favorites-movies/' + id);
@@ -13,6 +14,12 @@ const getMovieForUpdate = id => {
 const searchMovie = textSearch => {
   return axios.get(
     `https://www.omdbapi.com/?apiKey=${API_KEY}&s=${textSearch}`,
+  );
+};
+
+const getPopularMovies = () => {
+  return axios.get(
+    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${THE_MOVIE_DB_API_KEY}`,
   );
 };
 
@@ -35,7 +42,6 @@ const saveWatchLaterMovie = (email, omDBId, poster) => {
     omDBId,
     poster,
   };
-  console.log(payload);
   return axios.post(
     `https://quever-api.appspot.com/api/watch-later/add-watch-later-movie`,
     payload,
@@ -98,6 +104,7 @@ const calculateRate = (imdbID, rateValue) => {
 export default {
   getMovie,
   getMovieForUpdate,
+  getPopularMovies,
   searchMovie,
   getMovieDetail,
   saveWatchLaterMovie,
