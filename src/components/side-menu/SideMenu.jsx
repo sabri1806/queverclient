@@ -16,7 +16,7 @@ import MenuItems from './SideMenuItems';
 import SpainFlag from '../../assets/images/flags/es.svg';
 import BrazilFlag from '../../assets/images/flags/en.svg';
 
-const SideMenu = ({ history, open }) => {
+const SideMenu = ({ history, open, onClose }) => {
   const classes = useStyles();
   const { formatMessage } = useIntl();
 
@@ -32,7 +32,7 @@ const SideMenu = ({ history, open }) => {
           },
         }
       : {
-          onClose: this.props.onClose,
+          onClose: onClose,
           classes: {
             paper: classes.drawerPaperMobile,
           },

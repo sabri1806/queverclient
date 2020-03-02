@@ -37,8 +37,8 @@ export default makeStyles(theme => ({
     marginBottom: 1,
   },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
+    marginLeft: '12px !important',
+    marginRight: '20px !important',
   },
   sectionHeader: {
     backgroundColor: '#ffffff',

@@ -2,8 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+import './assets/styles/styles.css';
+import './assets/styles/fonts.css';
 import Login from './pages/login/Login';
 import { IntlProvider } from 'react-intl';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 // import Login from './components/Login';
 import CreateFavoriteMovie from './pages/favourites/components/create-favourite-movie/CreateFavoriteMovie';
 import ShowMovieDetails from './components/movie-detail/ShowMovieDetails';
@@ -27,26 +31,40 @@ const App = () => {
   const language =
     localStorage.getItem('language') || navigator.language.substring(0, 2);
 
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: ['"avenir_next"', 'Georgia', 'sans-serif'].join(','),
+      useNextVariants: true,
+    },
+  });
+
   return (
     <Provider store={store}>
       <IntlProvider locale={language} messages={messages[language]}>
-        <Router>
-          <Route path='/' exact component={Home} />
-          <Route path='/login' exact component={Login} />
-          <Route
-            exact
-            path='/watch-later-movie-list'
-            component={ShowWatchLaterMovieList}
-          />
-          <Route path='/show-favourite' component={ShowFavoritesMovieList} />
-          <Route path='/search-movie' component={SearchMoviesPage} />
-          <Route
-            path='/create-favorite-movie'
-            component={CreateFavoriteMovie}
-          />
-          <Route path='/show-movie/:id' component={ShowMovieDetails} />
-          <Route path='/movie-detail/:id' component={MovieDetail} />
-        </Router>
+        <CssBaseline>
+          <MuiThemeProvider theme={theme}>
+            <Router>
+              <Route path='/' exact component={Home} />
+              <Route path='/login' exact component={Login} />
+              <Route
+                exact
+                path='/watch-later-movie-list'
+                component={ShowWatchLaterMovieList}
+              />
+              <Route
+                path='/show-favourite'
+                component={ShowFavoritesMovieList}
+              />
+              <Route path='/search-movie' component={SearchMoviesPage} />
+              <Route
+                path='/create-favorite-movie'
+                component={CreateFavoriteMovie}
+              />
+              <Route path='/show-movie/:id' component={ShowMovieDetails} />
+              <Route path='/movie-detail/:id' component={MovieDetail} />
+            </Router>
+          </MuiThemeProvider>
+        </CssBaseline>
       </IntlProvider>
     </Provider>
     //   <Router>

@@ -1,0 +1,19 @@
+body {
+  font-family: 'avenir_next', Georgia, sans-serif !important;
+}
+
+.alice-carousel__dots {
+  position: relative;
+}
+.alice-carousel__dots li {
+  width: 60px;
+  height: 4px;
+  border-radius: 3px;
+  background-color: #d8d8d8;
+}
+.alice-carousel__dots-item:hover {
+  background-color: #2ec4b6 !important;
+}
+.alice-carousel__dots-item.__active {
+  background-color: #2ec4b6 !important;
+}
