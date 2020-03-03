@@ -14,10 +14,9 @@ const MovieDetail = ({
   removeLastMovie,
 }) => {
   const [average, setAverage] = useState(null);
-  console.log(movie);
+
   const handleCalculateRate = (movie, rateValue) => {
     MovieService.calculateRate(movie.imdbID, rateValue).then(response => {
-      console.log(response.data);
       setAverage(response.data.average);
     });
   };

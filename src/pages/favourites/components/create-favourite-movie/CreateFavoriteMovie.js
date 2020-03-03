@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import MovieService from '../../../../services/MovieService';
 
 //Favoritos - creacion
 class CreateFavoriteMovie extends Component {
@@ -21,19 +21,18 @@ class CreateFavoriteMovie extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    const user = JSON.parse(localStorage.getItem('user'));
     const data = {
       moviename: this.state.moviename,
       description: this.state.description,
       genre: this.state.genre,
       year: this.state.year,
       cast: this.state.cast,
+      email: user.email,
     };
 
-    axios
-      .post('http://localhost:8082/api/favorites-movies', data)
+    MovieService.saveFavourite(data)
       .then(res => {
-        console.log(data + '>> esto viene en data');
         this.setState({
           moviename: '',
           description: '',
@@ -41,7 +40,7 @@ class CreateFavoriteMovie extends Component {
           year: '',
           cast: '',
         });
-        this.props.history.push('/show-favourite');
+        this.props.history.push('/favourite-movies');
       })
       .catch(err => {
         console.log('Error in CreateFavoriteMovie!');
