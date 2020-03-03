@@ -42,6 +42,7 @@ const MovieDetail = ({
     const user = JSON.parse(localStorage.getItem('user'));
     MovieService.rateMovieQueVer(
       user.email,
+      movie.Title,
       movie.imdbID,
       rateValue,
     ).then(data => {}, handleCalculateRate(movie));

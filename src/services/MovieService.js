@@ -102,9 +102,10 @@ const deleteAllWatchLaterMovie = () => {
     });
 };
 
-const rateMovieQueVer = (email, imdbID, rateValue) => {
+const rateMovieQueVer = (email, title, imdbID, rateValue) => {
   const payload = {
     email,
+    title,
     imdbID,
     rateValue,
   };
