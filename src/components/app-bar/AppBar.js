@@ -83,7 +83,7 @@ const MenuAppBar = ({ userName, signOut }) => {
                   <Link to='/watch-later-movie-list'>Watch Later List</Link>
                 </MenuItem>
                 <MenuItem>
-                  <Link to='/show-favourite'>Favorites Movies</Link>
+                  <Link to='/favourite-movies'>Favorites Movies</Link>
                   {/* <a className={classes.linkMenu} href='/show-favourite'>
                     Favorites Movies
                   </a> */}

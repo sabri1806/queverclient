@@ -55,7 +55,7 @@ class CreateFavoriteMovie extends Component {
             <div className='col-md-8 m-auto'>
               <br />
               <Link
-                to='/show-favourite'
+                to='/favourite-movies'
                 className='btn btn-outline-warning float-left'
               >
                 Show Movie List

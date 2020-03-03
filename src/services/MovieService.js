@@ -7,6 +7,10 @@ const getMovie = id => {
   return axios.get('http://localhost:8082/api/favorites-movies/' + id);
 };
 
+const getFavouritesMovies = () => {
+  return axios.get('https://quever-api.appspot.com/api/favorites-movies');
+};
+
 const saveFavourite = ({
   moviename,
   description,
@@ -32,15 +36,14 @@ const getMovieForUpdate = id => {
   return axios.get('https://quever-api.appspot.com/api/favorites-movies/' + id);
 };
 
-const searchMovie = textSearch => {
-  return axios.get(
-    `https://www.omdbapi.com/?apiKey=${API_KEY}&s=${textSearch}`,
-  );
+const deleteFavouriteMovie = id => {
+  axios.delete('http://localhost:8082/api/favorites-movies/' + id);
 };
 
-const getPopularMovies = () => {
-  return axios.get(
-    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${THE_MOVIE_DB_API_KEY}`,
+const updateMovie = (movieId, data) => {
+  return axios.put(
+    'https://quever-api.appspot.com/api/favorites-movies/' + movieId,
+    data,
   );
 };
 
@@ -58,16 +61,21 @@ const shareFavourites = ({ firstName, lastName, email, emailTo }) => {
   );
 };
 
-const getMovieDetail = movieId => {
+const searchMovie = textSearch => {
   return axios.get(
-    `https://www.omdbapi.com/?apiKey=${API_KEY}&i=${movieId}&plot=full&r=json`,
+    `https://www.omdbapi.com/?apiKey=${API_KEY}&s=${textSearch}`,
   );
 };
 
-const updateMovie = (movieId, data) => {
-  return axios.put(
-    'https://quever-api.appspot.com/api/favorites-movies/' + movieId,
-    data,
+const getPopularMovies = () => {
+  return axios.get(
+    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${THE_MOVIE_DB_API_KEY}`,
+  );
+};
+
+const getMovieDetail = movieId => {
+  return axios.get(
+    `https://www.omdbapi.com/?apiKey=${API_KEY}&i=${movieId}&plot=full&r=json`,
   );
 };
 
@@ -88,10 +96,6 @@ const getWatchLaterMovies = () => {
   return axios.get(
     'https://quever-api.appspot.com/api/watch-later/all-watch-later',
   );
-};
-
-const getFavouritesMovies = () => {
-  return axios.get('https://quever-api.appspot.com/api/favorites-movies');
 };
 
 const deleteWatchLaterMovie = id => {
@@ -137,18 +141,19 @@ const calculateRate = (imdbID, rateValue) => {
 
 export default {
   getMovie,
+  getFavouritesMovies,
   saveFavourite,
   getMovieForUpdate,
-  getPopularMovies,
+  deleteFavouriteMovie,
+  updateMovie,
+  shareFavourites,
   searchMovie,
+  getPopularMovies,
   getMovieDetail,
   saveWatchLaterMovie,
-  getFavouritesMovies,
   getWatchLaterMovies,
   deleteWatchLaterMovie,
   deleteAllWatchLaterMovie,
   rateMovieQueVer,
   calculateRate,
-  shareFavourites,
-  updateMovie,
 };

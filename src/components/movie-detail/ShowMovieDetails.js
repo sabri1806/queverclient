@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import movieActions from '../../redux/actions/movie.actions';
+import MovieService from '../../services/MovieService';
 
 //Favoritos - detalle de la pelicula a editar o eliminar
 class showMovieDetails extends Component {
@@ -19,10 +19,9 @@ class showMovieDetails extends Component {
   }
 
   onDeleteClick(id) {
-    axios
-      .delete('http://localhost:8082/api/favorites-movies/' + id)
+    MovieService.deleteFavouriteMovie(id)
       .then(res => {
-        this.props.history.push('/show-favourite');
+        this.props.history.push('/favourite-movies');
       })
       .catch(err => {
         console.log('Error form ShowMovieDetails_deleteClick');
@@ -36,14 +35,6 @@ class showMovieDetails extends Component {
     let MovieItem = (
       <div>
         <table className='table table-hover table-dark'>
-          {/* <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead> */}
           <tbody>
             <tr>
               <th scope='row'>1</th>
@@ -82,7 +73,7 @@ class showMovieDetails extends Component {
             <div className='col-md-10 m-auto'>
               <br /> <br />
               <Link
-                to={'/show-favourite'}
+                to={'/favourite-movies'}
                 className='btn btn-outline-warning float-left'
               >
                 Show Movie List
