@@ -105,7 +105,7 @@ const deleteWatchLaterMovie = id => {
         id,
     )
     .then(res => {
-      window.location = '/watch-later-movie-list';
+      window.location = '/watch-later';
     })
     .catch(err => {
       console.log('Error from MovieService_deleteWatchLaterMovie');

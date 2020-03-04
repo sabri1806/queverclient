@@ -13,21 +13,15 @@ const ShowWatchLaterMovieList = ({ history }) => {
   const [movies, setMovies] = useState(null);
 
   const deleteWatchLater = movie => {
-    console.log(setMovies);
-    // MovieService.deleteWatchLaterMovie(movie).then(data => {
-    //   console.log(data);
-    // });
+    MovieService.deleteWatchLaterMovie(movie).then(data => {});
   };
 
   const deleteAllWatchLater = () => {
-    MovieService.deleteAllWatchLaterMovie().then(data => {
-      console.log(data);
-    });
+    MovieService.deleteAllWatchLaterMovie().then(data => {});
   };
 
   useEffect(() => {
     MovieService.getWatchLaterMovies().then(response => {
-      console.log(response.data, 'getAll');
       setMovies(response.data);
     });
   }, []);
@@ -40,13 +34,14 @@ const ShowWatchLaterMovieList = ({ history }) => {
       <Box>
         <Grid className={classes.deleteAll}>
           <Button
-            style={{ backgroundColor: '#e67e22', color: '#fff' }}
             variant='contained'
+            color='primary'
             onClick={deleteAllWatchLater}
             className='btn btn-primary'
             type='submit'
+            disabled={!movies || movies.length === 0}
           >
-            {formatMessage({ id: 'watchLaterPage.dleteButton' })}
+            {formatMessage({ id: 'watchLaterPage.deleteButton' })}
           </Button>
         </Grid>
         <Grid container>
