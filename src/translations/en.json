@@ -15,5 +15,6 @@
   "logoutDialog.title": "Logout",
   "logoutDialog.message": "Are you sure you want to close session?",
   "searchPage.title": "Movie Search",
-  "searchPage.text.placeholder": "Movie name"
+  "searchPage.text.placeholder": "Movie name",
+  "searchMovie.movieDetail.title": "Movie Detail"
 }
