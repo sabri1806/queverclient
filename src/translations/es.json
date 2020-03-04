@@ -6,6 +6,7 @@
   "menu.search": "Buscar Peliculas",
   "menu.watchLater": "Ver Luego",
   "menu.favourites": "Favoritos",
+  "menu.favourites.create": "Crear Favorito",
   "menu.logout": "Cerrar sesión",
   "homePage.popular.title": "Las peliculas mas populares",
   "favouritesPage.dialog.tile": "Compartir favoritos",

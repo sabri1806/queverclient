@@ -1,25 +1,31 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import MovieService from '../../../../services/MovieService';
+import MainLayout from '../../../../components/main-layout/MainLayout';
+import Box from '../../../../components/box/Box';
+import { Button, Grid } from '@material-ui/core';
+import CustomTextField from '../../../../components/custom-text-field/CustomTextField';
+import useStyles from './CreateFavourteMovie.styles';
 
 //Favoritos - creacion
-class CreateFavoriteMovie extends Component {
-  constructor() {
-    super();
-    this.state = {
-      moviename: '',
-      description: '',
-      genre: '',
-      year: '',
-      cast: '',
-    };
-  }
+const CreateFavoriteMovie = ({ history }) => {
+  const { formatMessage } = useIntl();
+  const [newFavourite, setNewFavourite] = useState({
+    moviename: '',
+    description: '',
+    genre: '',
+    year: '',
+    cast: '',
+  });
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  const classes = useStyles();
+
+  const onChange = e => {
+    setNewFavourite({ ...newFavourite, [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
+  const onSubmit = e => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem('user'));
     const data = {
@@ -47,91 +53,97 @@ class CreateFavoriteMovie extends Component {
       });
   };
 
-  render() {
-    return (
-      <div className='CreateFavoriteMovie'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-8 m-auto'>
-              <br />
-              <Link
-                to='/favourite-movies'
-                className='btn btn-outline-warning float-left'
+  return (
+    <MainLayout
+      history={history}
+      title={formatMessage({ id: 'menu.favourites.create' })}
+    >
+      <Box>
+        <div className='CreateFavoriteMovie'>
+          <div className='container'>
+            <div className='row'>
+              <div
+                className='col-md-8 m-auto'
+                style={{ display: 'flex', justifyContent: 'flex-end' }}
               >
-                Show Movie List
-              </Link>
-            </div>
-            <div className='col-md-8 m-auto'>
-              <h1 className='display-4 text-center'>Add Movie</h1>
-              <p className='lead text-center'>Create new favorite movie</p>
-
-              <form noValidate onSubmit={this.onSubmit}>
-                <div className='form-group'>
-                  <input
-                    type='text'
-                    placeholder='Title of the Movie'
+                <Link
+                  style={{ textDecoration: 'none' }}
+                  to='/favourite-movies'
+                  className='btn btn-outline-warning float-left'
+                >
+                  <Button variant={'contained'} color='primary'>
+                    Show Movie List
+                  </Button>
+                </Link>
+              </div>
+              <Grid container style={{ padding: 24 }}>
+                <Grid item xs={12} md={6}>
+                  <CustomTextField
+                    className={classes.input}
                     name='moviename'
-                    className='form-control'
-                    value={this.state.name}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <br />
-
-                <div className='form-group'>
-                  <input
                     type='text'
-                    placeholder='Describe this movie'
+                    placeholder='title'
+                    value={newFavourite.name}
+                    onChange={onChange}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <CustomTextField
+                    className={classes.input}
                     name='description'
-                    className='form-control'
-                    value={this.state.description}
-                    onChange={this.onChange}
-                  />
-                </div>
-
-                <div className='form-group'>
-                  <input
                     type='text'
-                    placeholder='Genre'
+                    placeholder='description'
+                    value={newFavourite.description}
+                    onChange={onChange}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <CustomTextField
+                    className={classes.input}
                     name='genre'
-                    className='form-control'
-                    value={this.state.genre}
-                    onChange={this.onChange}
-                  />
-                </div>
-
-                <div className='form-group'>
-                  <input
                     type='text'
-                    placeholder='Year'
+                    placeholder='genre'
+                    value={newFavourite.genre}
+                    onChange={onChange}
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <CustomTextField
+                    className={classes.input}
                     name='year'
-                    className='form-control'
-                    value={this.state.year}
-                    onChange={this.onChange}
-                  />
-                </div>
-
-                <div className='form-group'>
-                  <input
                     type='text'
-                    placeholder='Cast'
-                    name='cast'
-                    className='form-control'
-                    value={this.state.cast}
-                    onChange={this.onChange}
+                    placeholder='year'
+                    value={newFavourite.year}
+                    onChange={onChange}
                   />
-                </div>
-                <input
-                  type='submit'
-                  className='btn btn-outline-warning btn-block mt-4'
-                />
-              </form>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <CustomTextField
+                    className={classes.input}
+                    name='cast'
+                    type='text'
+                    placeholder='cast'
+                    value={newFavourite.cast}
+                    onChange={onChange}
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <Button
+                    style={{ marginTop: 30 }}
+                    onClick={onSubmit}
+                    variant={'contained'}
+                    color='primary'
+                  >
+                    Guardar
+                  </Button>
+                </Grid>
+              </Grid>
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
-}
+      </Box>
+    </MainLayout>
+  );
+};
 
 export default CreateFavoriteMovie;
