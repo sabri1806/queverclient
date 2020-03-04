@@ -75,7 +75,7 @@ const getPopularMovies = () => {
 
 const getMovieDetail = movieId => {
   return axios.get(
-    `https://www.omdbapi.com/?apiKey=${API_KEY}&i=${movieId}&plot=full&r=json`,
+    `https://www.omdbapi.com/?apiKey=${API_KEY}&i=${movieId}&plot=short&r=json`,
   );
 };
 
