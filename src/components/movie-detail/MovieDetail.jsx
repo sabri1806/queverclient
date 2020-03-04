@@ -9,6 +9,7 @@ import MainLayout from '../main-layout/MainLayout';
 import useStyles from './MovieDetail.styles';
 import { useIntl } from 'react-intl';
 import Box from '../box/Box';
+import { Button } from '@material-ui/core';
 
 //consulta de peliculas - detalle
 const MovieDetail = ({
@@ -60,9 +61,26 @@ const MovieDetail = ({
     >
       <Box className={classes.detailContainer}>
         <Grid container className={classes.detailContainer}>
-          <Grid item xs={12} sm={8}>
+          <Grid item style={{ padding: 24 }}>
+            <Button
+              style={{ backgroundColor: '#e67e22', color: '#fff' }}
+              variant='contained'
+              onClick={clearCurrentMovie}
+              className='btn btn-primary'
+              type='submit'
+            >
+              {formatMessage({ id: 'btnAction.back' })}
+            </Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
             <Grid
               container
+              xs={12}
+              md={8}
               style={{
                 margin: '5px',
                 padding: '10px ',
@@ -95,15 +113,6 @@ const MovieDetail = ({
                 <b>{formatMessage({ id: 'movieDetailPage.cast' })}</b>{' '}
                 {movie.Actors}
                 <hr />
-                <div>
-                  <button
-                    onClick={clearCurrentMovie}
-                    className='btn btn-primary'
-                    type='submit'
-                  >
-                    Back
-                  </button>
-                </div>
               </Grid>
               <Grid item xs={12} md={7} className={classes.plot}>
                 <p>{movie.Plot}</p>

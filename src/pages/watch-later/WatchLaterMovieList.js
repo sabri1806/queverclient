@@ -4,8 +4,11 @@ import { useIntl } from 'react-intl';
 import MovieService from '../../services/MovieService';
 import MainLayout from '../../components/main-layout/MainLayout';
 import Box from '../../components/box/Box';
+import { Button } from '@material-ui/core';
+import useStyles from './WatchLaterMovieList.styles';
 
 const ShowWatchLaterMovieList = ({ history }) => {
+  const classes = useStyles();
   const { formatMessage } = useIntl();
   const [movies, setMovies] = useState(null);
 
@@ -16,8 +19,8 @@ const ShowWatchLaterMovieList = ({ history }) => {
     // });
   };
 
-  const deleteAllWatchLater = movie => {
-    MovieService.deleteAllWatchLaterMovie(movies).then(data => {
+  const deleteAllWatchLater = () => {
+    MovieService.deleteAllWatchLaterMovie().then(data => {
       console.log(data);
     });
   };
@@ -35,6 +38,17 @@ const ShowWatchLaterMovieList = ({ history }) => {
       title={formatMessage({ id: 'menu.watchLater' })}
     >
       <Box>
+        <Grid className={classes.deleteAll}>
+          <Button
+            style={{ backgroundColor: '#e67e22', color: '#fff' }}
+            variant='contained'
+            onClick={deleteAllWatchLater}
+            className='btn btn-primary'
+            type='submit'
+          >
+            {formatMessage({ id: 'watchLaterPage.dleteButton' })}
+          </Button>
+        </Grid>
         <Grid container>
           {movies &&
             movies.map(movie => {
@@ -72,13 +86,6 @@ const ShowWatchLaterMovieList = ({ history }) => {
                 </Grid>
               );
             })}
-          <button
-            type='button'
-            onClick={() => deleteAllWatchLater()}
-            className='btn btn-default btn-lg'
-          >
-            Delete all
-          </button>
         </Grid>
       </Box>
     </MainLayout>

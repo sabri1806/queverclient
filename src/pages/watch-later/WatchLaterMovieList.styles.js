@@ -1,15 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 
 export default makeStyles(theme => ({
-  detailContainer: {
+  deleteAll: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  movieDetail: {
-    width: 500,
-  },
-  plot: {
+    justifyContent: 'flex-end',
     padding: 24,
   },
 }));

@@ -2,6 +2,7 @@
   "btnAction.cancel": "Cancel",
   "btnAction.confirm": "Confirm",
   "btnAction.search": "Search",
+  "btnAction.back": "Back",
   "menu.home": "Home",
   "menu.search": "Search Movies",
   "menu.watchLater": "Watch Later",
@@ -18,5 +19,6 @@
   "searchPage.text.placeholder": "Movie name",
   "searchMovie.movieDetail.title": "Movie Detail",
   "movieDetailPage.rateMovie": "Rate It:",
-  "movieDetailPage.cast": "Cast"
+  "movieDetailPage.cast": "Cast",
+  "watchLaterPage.dleteButton": "Delete All"
 }
