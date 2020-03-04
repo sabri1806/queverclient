@@ -7,7 +7,7 @@ import Box from '../../components/box/Box';
 
 const ShowWatchLaterMovieList = ({ history }) => {
   const { formatMessage } = useIntl();
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(null);
 
   const deleteWatchLater = movie => {
     console.log(setMovies);
@@ -23,13 +23,11 @@ const ShowWatchLaterMovieList = ({ history }) => {
   };
 
   useEffect(() => {
-    if (movies.length === 0) {
-      MovieService.getWatchLaterMovies().then(response => {
-        console.log(response.data, 'getAll');
-        setMovies(response.data);
-      });
-    }
-  });
+    MovieService.getWatchLaterMovies().then(response => {
+      console.log(response.data, 'getAll');
+      setMovies(response.data);
+    });
+  }, []);
 
   return (
     <MainLayout
