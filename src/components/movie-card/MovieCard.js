@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 //Favoritos - movie item
 const MovieCard = props => {
   const movie = props.movie;
+  console.log(movie, 'movieCard');
 
   return (
     <div className='card-container'>

@@ -35,13 +35,13 @@
 .CreateFavoriteMovie {
   background-color: #f000;
   min-height: 100vh;
-  color: rgb(8, 8, 8);
+  color: #0a0a0a;
 }
 
 .ShowMovieDetails {
-  background-color: #4c4b49;
+  background-color: #f000;
   min-height: 100vh;
-  color: white;
+  color: #0a0a0a;
 }
 
 .UpdateFavoritesMovieInfo {

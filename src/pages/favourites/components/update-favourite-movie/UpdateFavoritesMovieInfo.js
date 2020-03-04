@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
 import MovieService from '../../../../services/MovieService';
 
 //Favoritos - Edicion
@@ -55,7 +54,7 @@ class UpdateFavoritesMovieInfo extends Component {
 
   render() {
     const { movie } = this.state;
-
+    if (!movie) return null;
     return (
       <div className='UpdateFavoritesMovieInfo'>
         <div className='container'>

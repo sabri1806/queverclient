@@ -6,13 +6,6 @@ import MovieService from '../../services/MovieService';
 
 //Favoritos - detalle de la pelicula a editar o eliminar
 class showMovieDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movie: {},
-    };
-  }
-
   componentDidMount() {
     const { getMovie } = this.props;
     getMovie(this.props.match.params.id);
@@ -31,7 +24,8 @@ class showMovieDetails extends Component {
   render() {
     // const movie = this.state.movie;
     const { movie } = this.props;
-
+    console.log(movie, 'que trae movie');
+    if (!movie) return null;
     let MovieItem = (
       <div>
         <table className='table table-hover table-dark'>
@@ -110,9 +104,6 @@ class showMovieDetails extends Component {
               <br />
             </div>
           </div>
-          {/* <br />
-            <button type="button" class="btn btn-outline-info btn-lg btn-block">Edit Movie</button>
-            <button type="button" class="btn btn-outline-danger btn-lg btn-block">Delete Movie</button> */}
         </div>
       </div>
     );
@@ -121,7 +112,7 @@ class showMovieDetails extends Component {
 
 const mapStateToProps = ({ movieReducer }) => {
   const { movie } = movieReducer;
-
+  console.log(movie);
   return {
     movie,
   };
