@@ -20,5 +20,5 @@
   "searchMovie.movieDetail.title": "Movie Detail",
   "movieDetailPage.rateMovie": "Rate It:",
   "movieDetailPage.cast": "Cast",
-  "watchLaterPage.dleteButton": "Delete All"
+  "watchLaterPage.deleteButton": "Delete All"
 }

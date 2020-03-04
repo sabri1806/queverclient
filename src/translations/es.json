@@ -11,7 +11,7 @@
   "menu.logout": "Cerrar sesión",
   "homePage.popular.title": "Las peliculas mas populares",
   "favouritesPage.dialog.tile": "Compartir favoritos",
-  "favouritesPage.dialog.shareWith": "Comparitr a:",
+  "favouritesPage.dialog.shareWith": "Compartir a:",
   "favouritesPage.snackbar.success": "Excelente ya compartiste tus favoritos!!",
   "logoutDialog.title": "Cerrar sesión",
   "logoutDialog.message": "¿Estás seguro que quieres cerrar la sesión?",
@@ -20,5 +20,5 @@
   "searchMovie.movieDetail.title": "Detalle de la película",
   "movieDetailPage.rateMovie": "Calificala:",
   "movieDetailPage.cast": "Actores",
-  "watchLaterPage.dleteButton": "Borrar Todas"
+  "watchLaterPage.deleteButton": "Borrar Todas"
 }
