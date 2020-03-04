@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
+
 import movieActions from '../../redux/actions/movie.actions';
 import RateMovie from '../rate-movie/RateMovie';
 import MovieService from '../../services/MovieService';
@@ -63,8 +64,6 @@ const MovieDetail = ({
             <Grid
               container
               style={{
-                border: '1px solid #000',
-                backgroundColor: '#eff5ef',
                 margin: '5px',
                 padding: '10px ',
                 display: 'flex',
@@ -93,7 +92,8 @@ const MovieDetail = ({
                   Que Ver Rating: {average}
                 </div>
                 <RateMovie rateMovie={handleRateMovie} movie={movie} />
-                Cast: {movie.Actors}
+                <b>{formatMessage({ id: 'movieDetailPage.cast' })}</b>{' '}
+                {movie.Actors}
                 <hr />
                 <div>
                   <button
