@@ -4,11 +4,11 @@ const API_KEY = '9c38b7d';
 const THE_MOVIE_DB_API_KEY = '2b5628de9b99a860ded3569d24480f1d';
 
 const getMovie = id => {
-  return axios.get('http://localhost:8082/api/favorites-movies/' + id);
+  return axios.get('https://quever-api.appspot.com/api/favorites-movies/' + id);
 };
 
 const getFavouritesMovies = () => {
-  return axios.get('http://localhost:8082/api/favorites-movies');
+  return axios.get('https://quever-api.appspot.com/api/favorites-movies');
 };
 
 const saveFavourite = ({
