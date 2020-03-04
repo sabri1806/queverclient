@@ -19,6 +19,7 @@ import messages_es from './translations/es.json';
 import messages_en from './translations/en.json';
 import Home from './pages/home/Home';
 import UpdateFavoritesMovieInfo from './pages/favourites/components/update-favourite-movie/UpdateFavoritesMovieInfo';
+import orange from '@material-ui/core/colors/orange';
 
 const App = () => {
   const messages = {
@@ -30,6 +31,9 @@ const App = () => {
     localStorage.getItem('language') || navigator.language.substring(0, 2);
 
   const theme = createMuiTheme({
+    palette: {
+      primary: orange,
+    },
     typography: {
       fontFamily: ['"avenir_next"', 'Georgia', 'sans-serif'].join(','),
       useNextVariants: true,

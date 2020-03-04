@@ -80,7 +80,7 @@ const MenuAppBar = ({ userName, signOut }) => {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <Link to='/watch-later-movie-list'>Watch Later List</Link>
+                  <Link to='/watch-later'>Watch Later List</Link>
                 </MenuItem>
                 <MenuItem>
                   <Link to='/favourite-movies'>Favorites Movies</Link>
