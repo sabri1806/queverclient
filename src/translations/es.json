@@ -2,10 +2,12 @@
   "btnAction.cancel": "Cancelar",
   "btnAction.confirm": "Confirmar",
   "btnAction.search": "Buscar",
+  "btnAction.back": "Volver",
   "menu.home": "Principal",
   "menu.search": "Buscar Peliculas",
   "menu.watchLater": "Ver Luego",
   "menu.favourites": "Favoritos",
+  "menu.favourites.create": "Crear Favorito",
   "menu.logout": "Cerrar sesión",
   "homePage.popular.title": "Las peliculas mas populares",
   "favouritesPage.dialog.tile": "Compartir favoritos",
@@ -14,5 +16,9 @@
   "logoutDialog.title": "Cerrar sesión",
   "logoutDialog.message": "¿Estás seguro que quieres cerrar la sesión?",
   "searchPage.title": "Buscador de película",
-  "searchPage.text.placeholder": "Nombre película"
+  "searchPage.text.placeholder": "Nombre película",
+  "searchMovie.movieDetail.title": "Detalle de la película",
+  "movieDetailPage.rateMovie": "Calificala:",
+  "movieDetailPage.cast": "Actores",
+  "watchLaterPage.dleteButton": "Borrar Todas"
 }

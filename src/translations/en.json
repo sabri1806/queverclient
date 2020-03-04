@@ -2,10 +2,12 @@
   "btnAction.cancel": "Cancel",
   "btnAction.confirm": "Confirm",
   "btnAction.search": "Search",
+  "btnAction.back": "Back",
   "menu.home": "Home",
   "menu.search": "Search Movies",
   "menu.watchLater": "Watch Later",
   "menu.favourites": "Favourites",
+  "menu.favourites.create": "Create Favourite Movie",
   "menu.logout": "Logout",
   "homePage.popular.title": "The most popular movies",
   "favouritesPage.dialog.tile": "Share favourites",
@@ -14,5 +16,9 @@
   "logoutDialog.title": "Logout",
   "logoutDialog.message": "Are you sure you want to close session?",
   "searchPage.title": "Movie Search",
-  "searchPage.text.placeholder": "Movie name"
+  "searchPage.text.placeholder": "Movie name",
+  "searchMovie.movieDetail.title": "Movie Detail",
+  "movieDetailPage.rateMovie": "Rate It:",
+  "movieDetailPage.cast": "Cast",
+  "watchLaterPage.dleteButton": "Delete All"
 }
