@@ -29,17 +29,17 @@ const CreateFavoriteMovie = ({ history }) => {
     e.preventDefault();
     const user = JSON.parse(localStorage.getItem('user'));
     const data = {
-      moviename: this.state.moviename,
-      description: this.state.description,
-      genre: this.state.genre,
-      year: this.state.year,
-      cast: this.state.cast,
+      moviename: newFavourite.moviename,
+      description: newFavourite.description,
+      genre: newFavourite.genre,
+      year: newFavourite.year,
+      cast: newFavourite.cast,
       email: user.email,
     };
 
     MovieService.saveFavourite(data)
       .then(res => {
-        this.setState({
+        setNewFavourite({
           moviename: '',
           description: '',
           genre: '',
