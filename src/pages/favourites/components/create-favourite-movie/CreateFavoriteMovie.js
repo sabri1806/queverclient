@@ -83,7 +83,7 @@ const CreateFavoriteMovie = ({ history }) => {
                     name='moviename'
                     type='text'
                     placeholder='title'
-                    value={newFavourite.name}
+                    value={newFavourite.moviename}
                     onChange={onChange}
                   />
                 </Grid>
