@@ -6,7 +6,6 @@ import useStyles from './MovieCard.styles';
 const MovieCard = props => {
   const classes = useStyles();
   const movie = props.movie;
-  console.log(movie, 'movieCard');
 
   return (
     <div className={classes.cardContainer}>

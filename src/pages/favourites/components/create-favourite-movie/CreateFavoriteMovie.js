@@ -64,15 +64,25 @@ const CreateFavoriteMovie = ({ history }) => {
             <div className='row'>
               <div
                 className='col-md-8 m-auto'
-                style={{ display: 'flex', justifyContent: 'flex-end' }}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  padding: 24,
+                }}
               >
                 <Link
                   style={{ textDecoration: 'none' }}
                   to='/favourite-movies'
                   className='btn btn-outline-warning float-left'
                 >
-                  <Button variant={'contained'} color='primary'>
-                    Show Movie List
+                  <Button
+                    variant={'contained'}
+                    color='primary'
+                    style={{ color: '#fff' }}
+                  >
+                    {formatMessage({
+                      id: 'favouritesPage.createFavourite.showListBtn',
+                    })}
                   </Button>
                 </Link>
               </div>
@@ -82,7 +92,9 @@ const CreateFavoriteMovie = ({ history }) => {
                     className={classes.input}
                     name='moviename'
                     type='text'
-                    placeholder='title'
+                    placeholder={formatMessage({
+                      id: 'favouritesPage.createFavourite.movieName',
+                    })}
                     value={newFavourite.moviename}
                     onChange={onChange}
                   />
@@ -92,7 +104,9 @@ const CreateFavoriteMovie = ({ history }) => {
                     className={classes.input}
                     name='description'
                     type='text'
-                    placeholder='description'
+                    placeholder={formatMessage({
+                      id: 'favouritesPage.createFavourite.description',
+                    })}
                     value={newFavourite.description}
                     onChange={onChange}
                   />
@@ -102,7 +116,9 @@ const CreateFavoriteMovie = ({ history }) => {
                     className={classes.input}
                     name='genre'
                     type='text'
-                    placeholder='genre'
+                    placeholder={formatMessage({
+                      id: 'favouritesPage.createFavourite.genre',
+                    })}
                     value={newFavourite.genre}
                     onChange={onChange}
                   />
@@ -112,7 +128,9 @@ const CreateFavoriteMovie = ({ history }) => {
                     className={classes.input}
                     name='year'
                     type='text'
-                    placeholder='year'
+                    placeholder={formatMessage({
+                      id: 'favouritesPage.createFavourite.year',
+                    })}
                     value={newFavourite.year}
                     onChange={onChange}
                   />
@@ -122,14 +140,16 @@ const CreateFavoriteMovie = ({ history }) => {
                     className={classes.input}
                     name='cast'
                     type='text'
-                    placeholder='cast'
+                    placeholder={formatMessage({
+                      id: 'favouritesPage.createFavourite.cast',
+                    })}
                     value={newFavourite.cast}
                     onChange={onChange}
                   />
                 </Grid>
                 <Grid container>
                   <Button
-                    style={{ marginTop: 30 }}
+                    style={{ marginTop: 30, color: '#fff' }}
                     onClick={onSubmit}
                     variant={'contained'}
                     color='primary'

@@ -65,16 +65,15 @@ const ShowMovieList = ({ history }) => {
             variant='contained'
             color='primary'
           >
-            + Add New Favorite Movie
+            {formatMessage({ id: 'favouritesPage.addNewFavourite' })}
           </Button>
           <Button
             onClick={() => setOpen(true)}
             style={{ color: '#fff' }}
             variant='contained'
             color='primary'
-            s
           >
-            + Share List of Movies Favorites
+            {formatMessage({ id: 'favouritesPage.shareFavourites' })}
           </Button>
         </div>
 
