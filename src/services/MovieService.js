@@ -37,7 +37,9 @@ const getMovieForUpdate = id => {
 };
 
 const deleteFavouriteMovie = id => {
-  axios.delete('https://quever-api.appspot.com/api/favorites-movies/' + id);
+  return axios.delete(
+    'https://quever-api.appspot.com/api/favorites-movies/' + id,
+  );
 };
 
 const updateMovie = (movieId, data) => {
