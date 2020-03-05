@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles(theme => ({
   showFavoritesMovieList: {
-    // backgroundColor: '#4c4b49',
-    height: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
     width: '100%',
-    minHeight: '100vh',
     minWidth: '100px',
+    padding: 24,
     color: '#fff',
   },
 }));

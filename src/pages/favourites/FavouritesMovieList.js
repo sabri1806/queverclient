@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import MovieCard from '../../components/movie-card/MovieCard';
 import MainLayout from '../../components/main-layout/MainLayout';
 import MovieService from '../../services/MovieService';
@@ -22,7 +21,8 @@ const ShowMovieList = ({ history }) => {
   const [snackBarOpen, setSnackBarOpen] = useState(false);
 
   useEffect(() => {
-    MovieService.getFavouritesMovies()
+    const user = JSON.parse(localStorage.getItem('user'));
+    MovieService.getFavouritesMovies(user.email)
       .then(res => {
         setMovies(res.data);
       })
@@ -59,34 +59,29 @@ const ShowMovieList = ({ history }) => {
     >
       <Box>
         <div className={classes.showFavoritesMovieList}>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-md-12'>
-                <br />
-                <h2 className='display-4 text-center'>Favorites Movies List</h2>
-              </div>
-              <div className='col-md-11'>
-                <Link
-                  to='/create-favorite-movie'
-                  className='btn btn-outline-warning float-right'
-                >
-                  + Add New Favorite Movie
-                </Link>
-                <Button onClick={() => setOpen(true)}>
-                  + Share List of Movies Favorites
-                </Button>
-                <br />
-                <br />
-                <hr />
-              </div>
-            </div>
+          <Button
+            onClick={() => history.push('/create-favorite-movie')}
+            style={{ color: '#fff', marginRight: 24 }}
+            variant='contained'
+            color='primary'
+          >
+            + Add New Favorite Movie
+          </Button>
+          <Button
+            onClick={() => setOpen(true)}
+            style={{ color: '#fff' }}
+            variant='contained'
+            color='primary'
+            s
+          >
+            + Share List of Movies Favorites
+          </Button>
+        </div>
 
-            <div className='list'>
-              {movies
-                ? movies.map((movie, k) => <MovieCard movie={movie} key={k} />)
-                : 'there is no movie record!'}
-            </div>
-          </div>
+        <div className='list'>
+          {movies
+            ? movies.map((movie, k) => <MovieCard movie={movie} key={k} />)
+            : 'No movies to show!'}
         </div>
       </Box>
       <CustomDialog

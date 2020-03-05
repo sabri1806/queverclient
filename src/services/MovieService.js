@@ -7,8 +7,10 @@ const getMovie = id => {
   return axios.get('https://quever-api.appspot.com/api/favorites-movies/' + id);
 };
 
-const getFavouritesMovies = () => {
-  return axios.get('https://quever-api.appspot.com/api/favorites-movies');
+const getFavouritesMovies = userEmail => {
+  return axios.get(
+    'https://quever-api.appspot.com/api/favorites-movies?email=' + userEmail,
+  );
 };
 
 const saveFavourite = ({
