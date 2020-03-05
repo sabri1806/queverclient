@@ -1,16 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useStyles from './MovieCard.styles';
 
 //Favoritos - movie item
 const MovieCard = props => {
+  const classes = useStyles();
   const movie = props.movie;
   console.log(movie, 'movieCard');
 
   return (
-    <div className='card-container'>
+    <div className={classes.cardContainer}>
       <div>
         <h2>
-          <Link to={`/show-movie/${movie._id}`}>{movie.moviename}</Link>
+          <Link to={`/show-movie/${movie._id}`} className={classes.linkCard}>
+            <p>{movie.moviename}</p>
+          </Link>
         </h2>
       </div>
       <img
