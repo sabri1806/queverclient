@@ -106,7 +106,7 @@ const MovieDetail = ({
                 <hr />
                 IMDB rating: {movie.imdbRating}
                 <hr />
-                <div style={{ paddingBottom: '10px' }}>
+                <div style={{ paddingBottom: '10px', fontWeight: 'bolder' }}>
                   Que Ver Rating: {average}
                 </div>
                 <RateMovie rateMovie={handleRateMovie} movie={movie} />

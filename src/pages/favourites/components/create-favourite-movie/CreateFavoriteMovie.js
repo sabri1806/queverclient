@@ -134,7 +134,7 @@ const CreateFavoriteMovie = ({ history }) => {
                     variant={'contained'}
                     color='primary'
                   >
-                    Guardar
+                    Save
                   </Button>
                 </Grid>
               </Grid>
