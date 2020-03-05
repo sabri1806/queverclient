@@ -48,9 +48,10 @@ const MovieList = ({ movies }) => {
                   alt={`Movie name: ${movie.Title}`}
                   src={
                     movie.Poster === 'N/A'
-                      ? 'https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg'
+                      ? 'https://m.media-amazon.com/images/M/MV5BMjE1MTIxNDc0OF5BMl5BanBnXkFtZTcwODg5NjYzOA@@._V1_SX300.jpg'
                       : movie.Poster
                   }
+                  onError="this.src='https://m.media-amazon.com/images/M/MV5BMjE1MTIxNDc0OF5BMl5BanBnXkFtZTcwODg5NjYzOA@@._V1_SX300.jpg';"
                 />
               </div>
               Year: {movie.Year}

@@ -38,8 +38,8 @@ const MovieDetail = ({
   });
 
   const clearCurrentMovie = () => {
-    history.push('/search-movie/');
     removeLastMovie();
+    history.push('/search-movie/');
   };
 
   if (!movie) return null;
