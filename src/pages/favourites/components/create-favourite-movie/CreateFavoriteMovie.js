@@ -127,7 +127,7 @@ const CreateFavoriteMovie = ({ history }) => {
                     onChange={onChange}
                   />
                 </Grid>
-                <Grid xs={12}>
+                <Grid container>
                   <Button
                     style={{ marginTop: 30 }}
                     onClick={onSubmit}
