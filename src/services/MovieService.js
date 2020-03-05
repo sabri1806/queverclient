@@ -8,11 +8,6 @@ const getMovie = id => {
 };
 
 const getFavouritesMovies = () => {
-<<<<<<< HEAD
-=======
-  console.log('lista de favoritos');
-
->>>>>>> 04e6984c89f6a9719d4ab898f5b1efa0bcd3d7a3
   return axios.get('https://quever-api.appspot.com/api/favorites-movies');
 };
 
