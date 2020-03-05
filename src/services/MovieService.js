@@ -8,7 +8,9 @@ const getMovie = id => {
 };
 
 const getFavouritesMovies = () => {
-  return axios.get('http:localhost:8082/api/favorites-movies');
+  console.log('lista de favoritos');
+
+  return axios.get('https://quever-api.appspot.com/api/favorites-movies');
 };
 
 const saveFavourite = ({
@@ -37,7 +39,7 @@ const getMovieForUpdate = id => {
 };
 
 const deleteFavouriteMovie = id => {
-  axios.delete('http://localhost:8082/api/favorites-movies/' + id);
+  axios.delete('https://quever-api.appspot.com/api/favorites-movies/' + id);
 };
 
 const updateMovie = (movieId, data) => {
