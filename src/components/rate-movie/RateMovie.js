@@ -49,7 +49,7 @@ const RateMovie = ({ movie, rateMovie }) => {
           <IconButton
             color='primary'
             aria-label='add to shopping cart'
-            onClick={() => rateMovie()}
+            onClick={() => rateMovie(5)}
           >
             <StarIcon />
           </IconButton>
