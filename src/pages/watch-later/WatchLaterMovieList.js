@@ -36,6 +36,7 @@ const ShowWatchLaterMovieList = ({ history }) => {
           <Button
             variant='contained'
             color='primary'
+            style={{ color: '#fff' }}
             onClick={deleteAllWatchLater}
             className='btn btn-primary'
             type='submit'
@@ -68,14 +69,18 @@ const ShowWatchLaterMovieList = ({ history }) => {
                     <div>
                       <img src={movie.poster} alt='' width='200'></img>
                     </div>
-                    <div style={{ position: 'absolute' }}>
-                      <button
-                        type='button'
+                    <div>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        style={{ color: '#fff' }}
                         onClick={() => deleteWatchLater(movie._id)}
-                        className='btn btn-danger'
+                        className='btn btn-primary'
+                        type='submit'
+                        disabled={!movies || movies.length === 0}
                       >
-                        Delete
-                      </button>
+                        {formatMessage({ id: 'btnAction.delete' })}
+                      </Button>
                     </div>
                   </div>
                 </Grid>

@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import MovieService from '../../services/MovieService';
-
+import { Button } from '@material-ui/core';
+import { useIntl } from 'react-intl';
 // const DEFAULT_PLACEHOLDER_IMAGE =
 //   'https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg';
 
 //Consulta de Peliculas - lista
 const MovieList = ({ movies }) => {
+  const { formatMessage } = useIntl();
   //WatchLaterMovie - add movie
   const watchLater = movie => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -59,14 +61,16 @@ const MovieList = ({ movies }) => {
                 <Link to={`/movie-detail/${movie.imdbID}`}> More </Link>
               </div>
               <div>
-                <button
-                  type='submit'
-                  className='btn btn-info'
+                <Button
+                  variant='contained'
+                  color='primary'
+                  style={{ color: '#fff' }}
                   onClick={() => watchLater(movie)}
-                  style={{ marginTop: '4px', position: 'relative' }}
+                  className='btn btn-primary'
+                  type='submit'
                 >
-                  Add to Que Ver List
-                </button>
+                  {formatMessage({ id: 'watchLaterPage.addToWatchBtn' })}
+                </Button>
               </div>
             </div>
           </Grid>

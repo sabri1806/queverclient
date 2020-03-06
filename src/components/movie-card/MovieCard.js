@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useStyles from './MovieCard.styles';
-
+import image from '../../assets/images/noFavouriteImg.png';
 //Favoritos - movie item
 const MovieCard = props => {
   const classes = useStyles();
@@ -16,10 +16,7 @@ const MovieCard = props => {
           </Link>
         </h2>
       </div>
-      <img
-        src='https://commapress.co.uk/books/the-book-of-cairo/cairo-provisional-v3/image%2Fspan3'
-        alt=''
-      />
+      <img src={image} alt='' style={{ width: 207, height: 300 }} />
       <div className='desc'>
         <h3>{movie.genre}</h3>
         <p>{movie.cast}</p>

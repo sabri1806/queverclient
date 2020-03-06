@@ -31,27 +31,27 @@ const FavouriteDetail = ({ history, getMovie, match, movie }) => {
       <table className='table table-hover table-dark'>
         <tbody>
           <tr>
-            <th scope='row'>1</th>
+            <th scope='row' />
             <td>Movie name</td>
             <td>{movie.moviename}</td>
           </tr>
           <tr>
-            <th scope='row'>2</th>
+            <th scope='row' />
             <td>Genre</td>
             <td>{movie.genre}</td>
           </tr>
           <tr>
-            <th scope='row'>3</th>
+            <th scope='row' />
             <td>Description</td>
             <td>{movie.description}</td>
           </tr>
           <tr>
-            <th scope='row'>4</th>
+            <th scope='row' />
             <td>Year</td>
             <td>{movie.year}</td>
           </tr>
           <tr>
-            <th scope='row'>5</th>
+            <th scope='row' />
             <td>Cast</td>
             <td>{movie.cast}</td>
           </tr>

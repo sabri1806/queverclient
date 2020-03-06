@@ -3,6 +3,7 @@
   "btnAction.confirm": "Confirm",
   "btnAction.search": "Search",
   "btnAction.back": "Back",
+  "btnAction.delete": "Delete",
   "menu.home": "Home",
   "menu.search": "Search Movies",
   "menu.watchLater": "Watch Later",
@@ -29,5 +30,6 @@
   "searchMovie.movieDetail.title": "Movie Detail",
   "movieDetailPage.rateMovie": "Rate It:",
   "movieDetailPage.cast": "Cast",
-  "watchLaterPage.deleteButton": "Delete All"
+  "watchLaterPage.deleteButton": "Delete All",
+  "watchLaterPage.addToWatchBtn": "Add to watch later"
 }

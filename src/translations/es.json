@@ -3,6 +3,7 @@
   "btnAction.confirm": "Confirmar",
   "btnAction.search": "Buscar",
   "btnAction.back": "Volver",
+  "btnAction.delete": "Borrar",
   "menu.home": "Principal",
   "menu.search": "Buscar Peliculas",
   "menu.watchLater": "Ver Luego",
@@ -29,5 +30,6 @@
   "searchMovie.movieDetail.title": "Detalle de la película",
   "movieDetailPage.rateMovie": "Calificala:",
   "movieDetailPage.cast": "Actores",
-  "watchLaterPage.deleteButton": "Borrar Todas"
+  "watchLaterPage.deleteButton": "Borrar Todas",
+  "watchLaterPage.addToWatchBtn": "Agregar a ver luego"
 }

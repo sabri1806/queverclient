@@ -43,6 +43,7 @@ const SearchMovie = ({ searchMovies }) => {
       <Button
         variant='contained'
         color='primary'
+        style={{ color: '#fff' }}
         classes={{
           root: classes.searchBtnRoot,
         }}
