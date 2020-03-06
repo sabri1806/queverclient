@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import MovieService from '../../../../services/MovieService';
-
+import MainLayout from '../../../../components/main-layout/MainLayout';
+import Box from '../../../../components/box/Box';
+import styles from './UpdateFavouritesMovieInfo.styes';
+import CustomTextField from '../../../../components/custom-text-field/CustomTextField';
+import { Button } from '@material-ui/core';
 //Favoritos - Edicion
 class UpdateFavoritesMovieInfo extends Component {
   constructor(props) {
@@ -56,96 +59,122 @@ class UpdateFavoritesMovieInfo extends Component {
     const { movie } = this.state;
     if (!movie) return null;
     return (
-      <div className='UpdateFavoritesMovieInfo'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-8 m-auto'>
-              <br />
-              <Link
-                to={'/favourite-movies'}
-                className='btn btn-outline-warning float-left'
-              >
-                Show Movie List
-              </Link>
-            </div>
-            <div className='col-md-8 m-auto'>
-              <h1 className='display-4 text-center'>Edit Movie</h1>
-              <p className='lead text-center'>Update Favorite Movie's Info</p>
+      <MainLayout>
+        <Box>
+          <div className={styles.updateFavoritesMovieInfo}>
+            <div className='container'>
+              <div className='row'>
+                <div style={styles.showFavoritesMovieList}>
+                  <Button
+                    onClick={() => this.props.history.push('/favourite-movies')}
+                    style={{ color: '#fff' }}
+                    variant='contained'
+                    color='primary'
+                  >
+                    Show Movie List
+                  </Button>
+                </div>
+                <div style={styles.title}>
+                  <h1 className='display-4 text-center'>Edit Movie</h1>
+                  <p className='lead text-center' style={{ marginLeft: 30 }}>
+                    (Update Favorite Movie's Info)
+                  </p>
+                </div>
+              </div>
+
+              <div style={styles.formContainer}>
+                <form noValidate onSubmit={this.onSubmit}>
+                  <div className='form-group'>
+                    <label style={styles.label} htmlFor='moviename'>
+                      Moviename
+                    </label>
+                    <CustomTextField
+                      styles={styles.input}
+                      name='moviename'
+                      type='text'
+                      placeholder='moviename'
+                      value={movie.moviename}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <br />
+
+                  <div style={styles.formInput}>
+                    <label style={styles.label} htmlFor='description'>
+                      Description
+                    </label>
+                    <CustomTextField
+                      styles={styles.input}
+                      name='description'
+                      type='text'
+                      placeholder='descripcion'
+                      value={movie.description}
+                      onChange={this.onChange}
+                    />
+                  </div>
+
+                  <div style={styles.formInput}>
+                    <label style={styles.label} htmlFor='genre'>
+                      Genre
+                    </label>
+                    <CustomTextField
+                      styles={styles.input}
+                      name='genre'
+                      type='text'
+                      placeholder='genre'
+                      value={movie.genre}
+                      onChange={this.onChange}
+                    />
+                  </div>
+
+                  <div style={styles.formInput}>
+                    <label style={styles.label} htmlFor='year'>
+                      Year
+                    </label>
+                    <CustomTextField
+                      styles={styles.input}
+                      name='year'
+                      type='text'
+                      placeholder='year'
+                      value={movie.year}
+                      onChange={this.onChange}
+                    />
+                  </div>
+
+                  <div style={styles.formInput}>
+                    <label style={styles.label} htmlFor='cast'>
+                      Cast
+                    </label>
+                    <CustomTextField
+                      styles={styles.input}
+                      name='cast'
+                      type='text'
+                      placeholder='cast'
+                      value={movie.cast}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <Button
+                    type='submit'
+                    style={{ marginTop: 30, color: '#fff' }}
+                    onClick={this.onSubmit}
+                    variant={'contained'}
+                    color='primary'
+                  >
+                    Update Movie
+                  </Button>
+                  {/* <button
+                    type='submit'
+                    className='btn btn-outline-info btn-lg btn-block'
+                  >
+                    Update Movie
+                  </button> */}
+                </form>
+              </div>
             </div>
           </div>
-
-          <div className='col-md-8 m-auto'>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className='form-group'>
-                <label htmlFor='moviename'>Moviename</label>
-                <input
-                  type='text'
-                  placeholder='Name of the Movie'
-                  name='moviename'
-                  className='form-control'
-                  value={movie.moviename}
-                  onChange={this.onChange}
-                />
-              </div>
-              <br />
-
-              <div className='form-group'>
-                <label htmlFor='description'>Description</label>
-                <input
-                  type='text'
-                  placeholder='Description'
-                  name='description'
-                  className='form-control'
-                  value={movie.description}
-                  onChange={this.onChange}
-                />
-              </div>
-
-              <div className='form-group'>
-                <label htmlFor='genre'>Genre</label>
-                <input
-                  type='text'
-                  placeholder='Genre'
-                  name='genre'
-                  className='form-control'
-                  value={movie.genre}
-                  onChange={this.onChange}
-                />
-              </div>
-
-              <div className='form-group'>
-                <label htmlFor='year'>Year</label>
-                <input
-                  type='text'
-                  placeholder='Year of the movie'
-                  name='year'
-                  className='form-control'
-                  value={movie.year}
-                  onChange={this.onChange}
-                />
-              </div>
-
-              <div className='form-group'>
-                <label htmlFor='cast'>Cast</label>
-                <input
-                  type='text'
-                  placeholder='Cast'
-                  name='cast'
-                  className='form-control'
-                  value={movie.cast}
-                  onChange={this.onChange}
-                />
-              </div>
-              <button
-                type='submit'
-                className='btn btn-outline-info btn-lg btn-block'
-              >
-                Update Movie
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+        </Box>
+      </MainLayout>
     );
   }
 }

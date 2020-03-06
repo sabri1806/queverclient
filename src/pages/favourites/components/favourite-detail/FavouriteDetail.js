@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
-import movieActions from '../../redux/actions/movie.actions';
-import MovieService from '../../services/MovieService';
-import MainLayout from '../main-layout/MainLayout';
-import Box from '../box/Box';
+import movieActions from '../../../../redux/actions/movie.actions';
+import MovieService from '../../../../services/MovieService';
+import MainLayout from '../../../../components/main-layout/MainLayout';
+import Box from '../../../../components/box/Box';
+import styles from './FavouriteDetail.styles';
+import { Button } from '@material-ui/core';
 
 //Favoritos - detalle de la pelicula a editar o eliminar
-const ShowMovieDetails = ({ history, getMovie, match, movie }) => {
+const FavouriteDetail = ({ history, getMovie, match, movie }) => {
   const { formatMessage } = useIntl();
 
   useEffect(() => {
@@ -67,43 +68,51 @@ const ShowMovieDetails = ({ history, getMovie, match, movie }) => {
         <div className='ShowMovieDetails'>
           <div className='container'>
             <div className='row'>
-              <div className='col-md-10 m-auto'>
-                <br /> <br />
-                <Link
-                  to={'/favourite-movies'}
-                  className='btn btn-outline-warning float-left'
+              <div style={styles.showFavoritesMovieList}>
+                <Button
+                  onClick={() => history.push('/favourite-movies')}
+                  style={{ color: '#fff' }}
+                  variant='contained'
+                  color='primary'
                 >
                   Show Movie List
-                </Link>
+                </Button>
               </div>
-              <br />
               <div className='col-md-8 m-auto'>
-                <p className='lead text-center'>View Movie's Info</p>
+                <p className='lead text-center'>Movie's Info</p>
                 <hr /> <br />
               </div>
             </div>
-            <div>{MovieItem}</div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              {MovieItem}
+            </div>
 
-            <div className='row'>
-              <div className='col-md-6'>
-                <button
-                  type='button'
-                  className='btn btn-outline-danger btn-lg btn-block'
+            <div
+              className='row'
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <div className='col-md-6' style={{ padding: 24 }}>
+                <Button
                   onClick={() => onDeleteClick(movie._id)}
+                  style={{ color: '#fff' }}
+                  variant='contained'
+                  color='primary'
                 >
                   Delete Movie
-                </button>
+                </Button>
                 <br />
               </div>
 
-              <div className='col-md-6'>
-                <Link
-                  to={`/edit-movie/${movie._id}`}
-                  className='btn btn-outline-info btn-lg btn-block'
+              <br />
+              <div className='col-md-6' style={{ padding: 24 }}>
+                <Button
+                  onClick={() => history.push(`/edit-movie/${movie._id}`)}
+                  style={{ color: '#fff' }}
+                  variant='contained'
+                  color='primary'
                 >
                   Edit Movie
-                </Link>
-                <br />
+                </Button>
               </div>
             </div>
           </div>
@@ -125,4 +134,4 @@ const mapDispatchToProps = {
   getMovie: movieActions.getMovie,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowMovieDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(FavouriteDetail);

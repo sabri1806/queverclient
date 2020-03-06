@@ -44,12 +44,6 @@
   color: #0a0a0a;
 }
 
-.UpdateFavoritesMovieInfo {
-  background-color: #4c4b49;
-  min-height: 100vh;
-  color: white;
-}
-
 /* MovieList Styles */
 .list {
   display: grid;

@@ -9,7 +9,6 @@ import { IntlProvider } from 'react-intl';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CreateFavoriteMovie from './pages/favourites/components/create-favourite-movie/CreateFavoriteMovie';
-import ShowMovieDetails from './components/movie-detail/ShowMovieDetails';
 import store from './redux/stores/app.store';
 import MovieDetail from './components/movie-detail/MovieDetail';
 import ShowFavoritesMovieList from './pages/favourites/FavouritesMovieList';
@@ -20,6 +19,7 @@ import messages_en from './translations/en.json';
 import Home from './pages/home/Home';
 import UpdateFavoritesMovieInfo from './pages/favourites/components/update-favourite-movie/UpdateFavoritesMovieInfo';
 import orange from '@material-ui/core/colors/orange';
+import FavouriteDetail from './pages/favourites/components/favourite-detail/FavouriteDetail';
 
 const App = () => {
   const messages = {
@@ -62,7 +62,7 @@ const App = () => {
                 path='/create-favorite-movie'
                 component={CreateFavoriteMovie}
               />
-              <Route path='/show-movie/:id' component={ShowMovieDetails} />
+              <Route path='/show-movie/:id' component={FavouriteDetail} />
               <Route path='/movie-detail/:id' component={MovieDetail} />
               <Route
                 path='/edit-movie/:id'
